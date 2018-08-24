@@ -1,0 +1,6 @@
+<picker bindchange="bindPickerChange" class="picker_main" value="{{index}}" range-key="name" range="{{array}}">
+  <button class="picker" type="default" size="mini">
+    <text class="picker_text">{{array[index].name}}</text>
+    <text class='iconfont icon-xuanze'></text>
+  </button>
+</picker>

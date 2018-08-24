@@ -1,10 +1,27 @@
 /**app.wxss**/
-.container {
+
+@import "./lib/stylesheet.wxss";
+
+page{
+  overflow-y: none!important;
+  height: 100%;
+}
+.page {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
   box-sizing: border-box;
+  color: #303133;
+  background-color: #F2F6FC;
 } 
+button[type=primary] {
+  color:#FFFFFF;
+  background-color:#409EFF;
+}
+
+button[loading][type=primary] {
+  color:rgba(255, 255, 255, 0.6);
+  background-color:#1988fb;
+}

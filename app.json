@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/login",
     "pages/logs/logs"
   ],
   "window":{
@@ -8,5 +9,20 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#409EFF",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "iconPath": "./assets/icon/main_query_nochecd_icon.png",
+      "selectedIconPath": "./assets/icon/main_query_checd_icon.png",
+      "text": "查询"
+    }, {
+      "pagePath": "pages/logs/logs",
+      "iconPath": "./assets/icon/main_my_nochecd_icon.png",
+      "selectedIconPath": "./assets/icon/main_my_checd_icon.png",
+      "text": "设置"
+    }]
   }
 }

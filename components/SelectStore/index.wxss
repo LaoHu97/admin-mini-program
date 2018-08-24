@@ -1,0 +1,20 @@
+
+@import "../../lib/stylesheet.wxss";
+
+.picker_main{
+  padding-left: 20rpx;
+}
+.picker{
+  width: 380rpx;
+  line-height: 72rpx;
+  margin: 20rpx 0;
+  font-size: 28rpx;
+  text-align: left;
+}
+.picker_text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 262rpx;
+  display: inline-flex
+}

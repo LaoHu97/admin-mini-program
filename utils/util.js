@@ -1,19 +1,33 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+const dateFormat = (source, ignore_minute) => {
+  var myDate;
+  var separate = '-';
+  var minute = '';
+  if (source === void(0)) {
+    source = new Date();
+  }
+  if (source) {
+    if (source.split) {
+      source = source.replace(/\-/g, '/');
+    } else if (isNaN(parseInt(source))) {
+      source = source.toString().replace(/\-/g, '/');
+    } else {
+      source = new Date(source);
+    }
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+    if (new Date(source) && (new Date(source)).getDate) {
+      myDate = new Date(source);
+      if (!ignore_minute) {
+        minute = (myDate.getHours() < 10 ? " 0" : " ") + myDate.getHours() + ":" + (myDate.getMinutes() < 10 ? "0" : "") + myDate.getMinutes();
+      }
+      return myDate.getFullYear() + separate + (myDate.getMonth() + 1) + separate + (myDate.getDate() < 10 ? '0' : '') + myDate.getDate() + minute;
+    } else {
+      return source.slice(0, 16);
+    }
+  } else {
+    return source
+  }
 }
 
 module.exports = {
-  formatTime: formatTime
+  dateFormat: dateFormat
 }

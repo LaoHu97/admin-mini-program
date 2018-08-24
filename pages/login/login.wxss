@@ -1,0 +1,44 @@
+
+.iconfont{
+  line-height: 70rpx;
+  color:#409EFF;
+  font-size:45rpx;
+}
+.page_top_icon{
+  width: 380rpx;
+  height: 200rpx;
+}
+.page_form_account,.page_form_password{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2rpx solid #909399;
+  height: 68rpx;
+}
+.page_form_account input,.page_form_password input{
+  height:32px;
+  line-height:32rpx;
+}
+.page_form_password{
+  margin-top: 35rpx;
+}
+.input-placeholder{
+  font-size: 28rpx;
+}
+.page_form_submit{
+  margin-top: 35rpx;
+}
+
+/** 添加自定义button点击态样式类**/
+.other-button-hover {
+  background-color: #1988fb;
+  color: #fff;
+}
+
+.page_login_form{
+  width: 550rpx;
+}
+.main_page{
+  background: url('https://s1.ax1x.com/2018/08/23/PTsihq.png') no-repeat;
+  background-size: 100%;
+  background-position-y: 100%; 
+}
