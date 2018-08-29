@@ -5,28 +5,23 @@
   color: #fff;
   font-size: 32rpx;
   background-color: #409EFF;
+  display: flex;
+  justify-content: space-between;
 }
 .header_main{
   width: 100%;
 }
-.header button{
-  height: 100rpx;
-  line-height: 100rpx;
+.header_search{
+  padding-left: 20rpx;
+}
+.header_search_hover{
+  color: #ccc;
 }
 .iconfont{
   margin-right: 5rpx;
 }
-button[type=primary] {
-  color:#fff;
-  font-size: 32rpx;
-  background-color:#409EFF;
-}
-button[type=primary]::after {
-  border: 0;
-}
-.header .button-hover{
-  color: #cdcdcd;
-  background-color: #409EFF;
+.bottom_main .bottom_main_button_hover{
+  background-color: #1988fb;
 }
 .select_date_title{
   font-size: 34rpx;
@@ -56,11 +51,11 @@ button[type=primary]::after {
   font-size: 38rpx;
 }
 .header_count{
-  width: 90%;
+  width: 95%;
   background-color: #fff;
   display: flex;
   justify-content: space-around;
-  border-radius: 10rpx;
+  border-radius: 8rpx;
 }
 .header_count_left{
   display: flex;
@@ -79,9 +74,80 @@ button[type=primary]::after {
 }
 .page_list{
   background-color: #fff;
-  width: 90%;
-  border-radius: 10rpx;
+  width: 95%;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
 }
 .page_list_scroll{
   width: 100%;
+}
+.list{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #F2F6FC;
+  height: 120rpx;
+}
+.list_left{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.list_left_text{
+  text-align: left;
+}
+.list_left_text_weixin:nth-child(1){
+  font-size: 32rpx;
+}
+.list_left_text_weixin:nth-child(2){
+  font-size: 28rpx;
+  color: #C0C4CC;
+}
+.list_left .iconfont{
+  font-size: 64rpx;
+  color: #2C8E34;
+  margin: 0 20rpx;
+}
+.list_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.list_right .iconfont{
+  color: #E4E7ED
+}
+.list_hover_class{
+  background: #E4E7ED;
+}
+.list_right{
+  font-weight: normal;
+  font-size: 28rpx;
+}
+.list_right text{
+  color: #f00;
+  font-size: 36rpx;
+  font-weight: bolder;
+}
+/**index.wxss**/
+.swiper-tab{
+	width: 100%;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+}
+.swiper-tab-list{  
+  font-size: 28rpx;
+  width: 50%;
+  color: #909399;
+  text-align: center;
+  border-bottom: 6rpx solid #EBEEF5;
+}
+.on{
+  color: #409EFF;
+  border-bottom: 6rpx solid #409EFF;
+}
+ 
+.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }
+.swiper-box view{
+	text-align: center;
 }

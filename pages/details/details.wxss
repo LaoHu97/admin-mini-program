@@ -1,0 +1,31 @@
+.page_main{
+  width: 90%;
+  background-color: #fff;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 8rpx;
+}
+.page_main_list_top{
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1rpx #E6A23C dashed;
+}
+.page_main_list_top text{
+  font-size: 38rpx;
+  padding: 0 10rpx;
+  font-weight: bolder;
+  color: #409EFF;
+}
+.page_main_list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx #E6A23C dashed;
+}
+.page_main_btn{
+  margin-top: 20rpx;
+}

@@ -2,10 +2,18 @@
 <view class="page">
   <view class="header_main">
     <view class="header">
-      <button class="header_search" type="primary" size="mini" bindtap="clickSearch">
+      <view class="header_search" hover-class="header_search_hover" bindtap="clickSearch">
         <text class='iconfont icon-shaixuan'></text>
         筛选
-      </button>
+      </view>
+    </view>
+    <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab == 0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+        实时交易
+      </view>
+      <view class="swiper-tab-list {{currentTab == 1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+        历史交易
+      </view>
     </view>
     <dialog-popup showDialog="{{pageShowDialog}}">
       <scroll-view scroll-y style="height:{{windowHeight + 50}}px">
@@ -30,7 +38,7 @@
         </view>
         <pay-ment radioItems="{{pageStatusRadioItems}}" bindmyevent="onMyStatusEvent"></pay-ment>
         <view class="bottom_main">
-          <button type="primary">确 定</button>
+          <button type="primary" hover-class="bottom_main_button_hover">确 定</button>
           <button type="default">重 置</button>
         </view>
       </scroll-view>
@@ -47,7 +55,23 @@
     </view>
   </view>
   <view class="page_list">
-    <scroll-view scroll-y style="height:{{windowHeight - 180}}px" class="page_list_scroll">
+    <scroll-view scroll-y style="height:{{windowHeight - 230}}px" enable-back-to-top bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" class="page_list_scroll">
+      <navigator class="list" wx:for="{{pageListObjectArray}}" url="/pages/details/details" wx:key="index" hover-class="list_hover_class">
+        <view class="list_left">
+          <text class="iconfont icon-weixinzhifu2"></text>
+          <view class="list_left_text">
+            <view class="list_left_text_weixin">{{item.name}}</view>
+            <view class="list_left_text_weixin">{{item.date}}</view>
+          </view>
+        </view>
+        <view class="list_right">
+          <view>
+            ￥
+            <text>{{item.amount}}</text>
+          </view>
+          <text class="iconfont icon-jiantou"></text>
+        </view>
+      </navigator>
     </scroll-view>
   </view>
 </view>

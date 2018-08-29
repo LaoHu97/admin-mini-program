@@ -1,4 +1,4 @@
-<view class="page main_page">
+<view class="main_page">
   <view>
     <image class="page_top_icon" mode="aspectFit" src="../../assets/icon/welcome_icon.png"></image>
   </view>

@@ -1,8 +1,9 @@
 {
   "pages":[
-    "pages/index/index",
+    "pages/setting/setting",
     "pages/login/login",
-    "pages/logs/logs"
+    "pages/index/index",
+    "pages/details/details"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -19,7 +20,7 @@
       "selectedIconPath": "./assets/icon/main_query_checd_icon.png",
       "text": "查询"
     }, {
-      "pagePath": "pages/logs/logs",
+      "pagePath": "pages/setting/setting",
       "iconPath": "./assets/icon/main_my_nochecd_icon.png",
       "selectedIconPath": "./assets/icon/main_my_checd_icon.png",
       "text": "设置"
