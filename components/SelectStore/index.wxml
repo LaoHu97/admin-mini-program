@@ -1,6 +1,4 @@
-<picker bindchange="bindPickerChange" class="picker_main" value="{{index}}" range-key="name" range="{{array}}">
-  <button class="picker" type="default" size="mini">
-    <text class="picker_text">{{array[index].name}}</text>
-    <text class='iconfont icon-xuanze'></text>
-  </button>
-</picker>
+<view class="picker" hover-class="picker_hover" bindtap="bindPickerChange">
+  <text class="picker_text">{{storeName}}</text>
+  <text class='iconfont icon-xuanze'></text>
+</view>

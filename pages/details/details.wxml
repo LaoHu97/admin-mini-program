@@ -8,6 +8,6 @@
       <text>{{item.name}}</text>
       <text>{{item.value}}</text>
     </view>
-    <button class="page_main_btn" type="warn"> 退 款 </button>
+    <button class="page_main_btn" type="warn" bindtap="refundClick"> 退 款 </button>
   </view>
 </view>

@@ -1,0 +1,42 @@
+.search_main{
+  height: 100%;
+  background: #fff;
+}
+.search{
+  padding: 10rpx 0;
+  display: flex;
+}
+.search_input{
+  width: 480rpx;
+  margin: 10rpx auto;
+  display: flex;
+  background: #efeff4;
+  border-radius: 300rpx;
+  align-items: center;
+  padding: 0 12rpx;
+}
+.search_input input{
+  width: 80%;
+  height: 60rpx;
+  font-size: 28rpx;
+  padding-left:15rpx;
+  line-height: 60rpx;
+}
+.search_button{
+  height: 60rpx;
+  margin-top: 10rpx;
+}
+.search_result{
+  text-align: center;
+  margin-top: 200rpx;
+  color: darkgray;
+}
+.maps_tabs_view{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid #F2F6FC;
+  padding: 0 20rpx;
+}

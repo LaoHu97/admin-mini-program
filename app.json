@@ -1,9 +1,11 @@
 {
   "pages":[
-    "pages/setting/setting",
     "pages/login/login",
     "pages/index/index",
-    "pages/details/details"
+    "pages/setting/setting",
+    "pages/details/details",
+    "pages/search/search",
+    "pages/refund/refund"
   ],
   "window":{
     "backgroundTextStyle":"light",

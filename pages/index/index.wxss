@@ -151,3 +151,19 @@
 .swiper-box view{
 	text-align: center;
 }
+.picker{
+  padding-right: 20rpx;
+}
+.picker_hover{
+  color: #ccc;
+}
+.page_list_else{
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 5;
+}
+.load_done{
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 5;
+}

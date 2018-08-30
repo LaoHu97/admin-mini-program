@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const md5 = require('../../utils/md5')
+const api = require('../../api/api')
 
 Page({
   data: {
@@ -11,7 +13,6 @@ Page({
     passwordInputFocus: false
   },
   onLoad () {
-    // Do some initialize when page load.
     wx.setNavigationBarTitle({
       title: '帐号登录'
     })
@@ -22,14 +23,27 @@ Page({
     })
   },
   loginFormSubmit (e) {
-    // this.setData({
-    //   loginButtonLoading: true,
-    //   loginButtonDisabled: true
-    // })
-    wx.switchTab({
-      url: '../index/index'
+    this.setData({
+      loginButtonLoading: true,
+      loginButtonDisabled: true
     })
-    console.log(e)
+    let para = {
+      account: e.detail.value.account,
+      password: md5.hexMD5(e.detail.value.password + e.detail.value.account)
+    }
+    api.loginApp(para).then(res=>{
+      if (res.status === 200) {
+        app.globalData.userInfo = res.data
+        wx.switchTab({
+          url: '../index/index'
+        })
+      }
+    }).then(res=>{
+      this.setData({
+        loginButtonLoading: false,
+        loginButtonDisabled: false
+      })
+    })
   },
   bindConfirmAccount () {
     this.setData({
