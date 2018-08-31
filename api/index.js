@@ -2,7 +2,8 @@ const app = getApp()
 
 const wxHttp = params => {
   wx.showLoading({
-    title: '加载中'
+    title: '加载中',
+    mask: true
   })
   let promise = new Promise(function (resolve, reject) {
     console.log(params)

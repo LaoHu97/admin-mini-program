@@ -2,10 +2,10 @@
 <view class="setting_page">
   <view class="page_top">
     <image class="page_top_img" mode="aspectFit" src="https://s1.ax1x.com/2018/08/28/POS9QH.png"></image>
-    <view>万年加油站<text>（1000473）</text></view>
+    <view>{{name}}<text>（{{account}}）</text></view>
   </view>
   <view class="page_main">
-    <navigator class="page_main_list" url="/pages/login/login" hover-class="page_main_hover">
+    <view class="page_main_list" bindtap="logOut" hover-class="page_main_hover">
       <view class="page_main_list_left">
         <text class='iconfont icon-tuichu'></text>
         <view>切换账号</view>
@@ -13,6 +13,6 @@
       <view class="page_main_list_right">
         <text class='iconfont icon-jiantou'></text>
       </view>
-    </navigator>
+    </view>
   </view>
 </view>

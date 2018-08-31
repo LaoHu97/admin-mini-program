@@ -3,6 +3,7 @@
 const app = getApp()
 const util = require('../../utils/util.js')
 const api = require('../../api/api')
+const { watch, computed } = require('../../utils/vuefy')
 
 Page({
   data: {
@@ -22,12 +23,10 @@ Page({
       { name: '退款成功', value: '1' }
     ],
     startTime: '00:00',
-    // startTime: {
-    //   value: util.formatTime(new Date(), 'YYYY-MM-DD')
-    // },
     endTime: '23:59',
 
-    storeName: '全部门店',
+    storeName: '',
+    storeNameHidden: false,
     storeValue: '',
     payWay: '',
     orderType: '2',
@@ -42,11 +41,42 @@ Page({
     currentTab: 0,
 
     sumAmt: 0,
-    countRow: 0
+    countRow: 0,
+
+    startDatePick1: '',
+    endDatePick1: '',
+    startDatePick2: '',
+    endDatePick2: ''
   },
   onLoad: function () {
     wx.setNavigationBarTitle({
       title: '交易查询'
+    })
+    this.setData({
+      storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
+      storeNameHidden: app.globalData.userInfo.eid ? true : false
+    })
+    computed(this, {
+
+    })
+    watch(this, {
+      currentTab(val){
+        if (val === '1') {
+          this.setData({
+            startDatePick1: util.dateFormat(Date.parse(new Date()) - 90*24*60*60*1000, 'YYYY-MM-DD'),
+            endDatePick1: util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD'),
+            startDatePick2: util.dateFormat(Date.parse(new Date()) - 90*24*60*60*1000, 'YYYY-MM-DD'),
+            endDatePick2: util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD')
+          })
+        } else {
+          this.setData({
+            startDatePick1: '',
+            endDatePick1: '',
+            startDatePick2: '',
+            endDatePick2: ''
+          })
+        }
+      }
     })
   },
   onShow: function () {
@@ -63,11 +93,13 @@ Page({
         });
       }
     })
-    if (app.globalData.storeData) {
+    try {
       vm.setData({
-        storeName: app.globalData.storeData.target.dataset.item.value,
-        storeValue: app.globalData.storeData.target.dataset.item.id
+        storeName: app.globalData.storeData.target.dataset.item.value || ' ',
+        storeValue: app.globalData.storeData.target.dataset.item.id || app.globalData.storeData.target.dataset.item.eid
       })
+    } catch (error) {
+      console.log('选择全部门店')
     }
     this.getUserList()
   },
@@ -125,8 +157,8 @@ Page({
   getUserList() {
     let para = {
       mid: app.globalData.userInfo.mid,
-      sid: this.data.storeValue.toString(),
-      eid: '',
+      sid: app.globalData.userInfo.sid || this.data.storeValue.toString(),
+      eid: app.globalData.userInfo.eid || this.data.storeValue.toString(),
       roleId: app.globalData.userInfo.roleId,
       role: app.globalData.userInfo.role,
       orderType: this.data.orderType,
@@ -251,8 +283,5 @@ Page({
       pageNum: '1'
     })
     this.getUserList()
-  },
-  clickPageList() {
-
   }
 })

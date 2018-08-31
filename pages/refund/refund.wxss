@@ -1,0 +1,65 @@
+.page_top{
+  width: 100%;
+}
+.page_input_title{
+  font-size: 32rpx;
+  line-height: 3;
+}
+.page_input input{
+  width: 80%;
+  height: 150rpx;
+  font-size: 48rpx;
+}
+.page_input text{
+  width: 20%;
+  font-size: 60rpx;
+  font-weight: bolder;
+}
+.page_input{
+  display: flex;
+  align-items: center;
+}
+.page_from_top{
+  padding: 0 20rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #DCDFE6;
+}
+.page_from_password{
+  margin: 20rpx 0;
+  background-color: #fff;
+  border-bottom: 1rpx solid #DCDFE6;
+  border-top: 1rpx solid #DCDFE6;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  padding: 0 20rpx;
+  height: 2.58823529em;
+  line-height: 2.58823529em;
+}
+.page_from_password text{
+  width: 20%;
+}
+.page_from_verify{
+  margin: 20rpx 0;
+  background-color: #fff;
+  border-bottom: 1rpx solid #DCDFE6;
+  border-top: 1rpx solid #DCDFE6;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  padding: 0 20rpx;
+}
+.page_from_verify input{
+  height: 2.58823529em;
+  line-height: 2.58823529em;
+  width: 280rpx;
+}
+.page_from_verify text{
+  width: 20%;
+}
+.page_from_verify .refund_class, .btn-area .refund_class{
+  background-color: #1988fb;
+}
+.btn-area{
+  padding: 0 20rpx;
+}

@@ -8,6 +8,7 @@
       <text>{{item.name}}</text>
       <text>{{item.value}}</text>
     </view>
-    <button class="page_main_btn" type="warn" bindtap="refundClick"> 退 款 </button>
+    <button class="page_main_btn" type="warn" bindtap="refundClick" wx:if="{{isHistory}}"> 退 款 </button>
+    <button class="page_main_btn" type="primary" hover-class="navigate_backto_hover" bindtap="navigateBackto" wx:else> 返 回 </button>
   </view>
 </view>

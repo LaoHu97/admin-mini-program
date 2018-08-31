@@ -1,1 +1,23 @@
-<view></view>
+<view class="page">
+  <form class="page_top" bindsubmit="formSubmit">
+    <view class="page_from_top">
+      <text class="page_input_title">退款金额</text>
+      <view class="page_input">
+        <text>￥</text>
+        <input name="amount" type="digit" placeholder="默认全额退款" focus/>
+      </view>
+    </view>
+    <view class="page_from_password">
+      <text>登录密码</text>
+      <input password name="password" placeholder="请输入登陆密码" />
+    </view>
+    <view class="page_from_verify">
+      <text>验证码</text>
+      <input name="code" placeholder="请输入验证码" />
+      <button size="mini" type="{{buttonType}}" disabled="{{buttonDisabled}}" hover-class="refund_class" bindtap="clickCode">{{btntext}}</button>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" type="primary" hover-class="refund_class">确定</button>
+    </view>
+  </form>
+</view>

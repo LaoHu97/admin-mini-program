@@ -29,3 +29,6 @@
 .page_main_btn{
   margin-top: 20rpx;
 }
+.page_main .navigate_backto_hover{
+  background-color: #1988fb;
+}

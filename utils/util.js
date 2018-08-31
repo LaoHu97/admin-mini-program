@@ -36,7 +36,7 @@ const dateFormat = function (source, ignore_minute, type) {
       if (!ignore_minute) {
         minute = (myDate.getHours() < 10 ? " 0" : " ") + myDate.getHours() + ":" + (myDate.getMinutes() < 10 ? "0" : "") + myDate.getMinutes();
       }
-      return myDate.getFullYear() + separate + (myDate.getMonth() + 1) + separate + (myDate.getDate() < 10 ? '0' : '') + myDate.getDate() + minute;
+      return myDate.getFullYear() + separate + (myDate.getMonth() + 1 < 10 ? '0' : '') + (myDate.getMonth() + 1 ) + separate + (myDate.getDate() < 10 ? '0' : '') + myDate.getDate() + minute;
     } else {
       return source.slice(0, 16);
     }

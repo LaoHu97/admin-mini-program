@@ -3,7 +3,6 @@
 @import "./lib/stylesheet.wxss";
 
 page{
-  overflow-y: none!important;
   height: 100%;
 }
 .page {

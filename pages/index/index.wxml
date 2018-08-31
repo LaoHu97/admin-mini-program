@@ -7,7 +7,7 @@
         <text class='iconfont icon-shaixuan'></text>
         筛选
       </view>
-      <view class="picker" hover-class="picker_hover" bindtap="bindPickerChange">
+      <view class="picker" hover-class="picker_hover" bindtap="bindPickerChange" hidden="{{storeNameHidden}}">
         <text class="picker_text">{{storeName}}</text>
         <text class='iconfont icon-xuanze'></text>
       </view>
@@ -26,13 +26,13 @@
         <view>
           <text class="select_date_title">选择日期</text>
           <view class="select_date">
-            <picker mode="{{currentTab == 0 ? 'time' : 'date'}}" value="{{startTime}}" bindchange="bindStartDateChange">
+            <picker mode="{{currentTab == 0 ? 'time' : 'date'}}" start="{{startDatePick1}}" end="{{endDatePick1}}" value="{{startTime}}" bindchange="bindStartDateChange">
               <button class="select_date_picker" type="default" size="mini">
                 {{startTime}}
               </button>
             </picker>
             -
-            <picker mode="{{currentTab == 0 ? 'time' : 'date'}}" value="{{endTime}}" bindchange="bindEndDateChange">
+            <picker mode="{{currentTab == 0 ? 'time' : 'date'}}" end="{{endDatePick2}}" start="{{startDatePick2}}" value="{{endTime}}" bindchange="bindEndDateChange">
               <button class="select_date_picker" type="default" size="mini">
                 {{endTime}}
               </button>
@@ -62,7 +62,7 @@
   <view class="page_list">
     <scroll-view scroll-y style="height:{{windowHeight - 230}}px" enable-back-to-top bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" class="page_list_scroll">
       <view wx:if="{{pageListObjectArray.length}}">
-        <navigator class="list" wx:for="{{pageListObjectArray}}" url="/pages/details/details?id={{item.id}}&orderId={{item.orderId}}" wx:key="index" hover-class="list_hover_class">
+        <navigator class="list" wx:for="{{pageListObjectArray}}" url="/pages/details/details?id={{item.id}}&orderId={{item.orderId}}&type={{currentTab}}" wx:key="index" hover-class="list_hover_class">
           <view class="list_left">
             <text class="iconfont {{common.formatPaymentIco(item.payWay)}}"></text>
             <view class="list_left_text">

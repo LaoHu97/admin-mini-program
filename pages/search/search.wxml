@@ -2,12 +2,20 @@
   <view class="search">
     <view class="search_input">
       <icon type="search" size="16" />
-      <input placeholder="请输入门店关键字" bindinput="searchInput" maxlength="10" value="{{searchInputValue}}" placeholder-style="font-size: 24rpx;" confirm-type="search" focus />
+      <input placeholder="{{inputPlaceholder}}" bindinput="searchInput" maxlength="10" value="{{searchInputValue}}" placeholder-style="font-size: 24rpx;" confirm-type="search" focus />
       <icon type="clear" wx:if="{{searchInputValue!=''}}" bindtap="delText" class="search_del" size="16" />
     </view>
     <button size="mini" class="search_button" bindtap="getMapList" type="primary">搜索</button>
   </view>
   <view wx:if="{{searchResult}}">
+    <view class="maps_tabs_view" bindtap="tapMapsScrollView">
+      <block>
+        <view class="title_text">{{storeName}}</view>
+      </block>
+      <block>
+        <text class="iconfont map_ico icon-jiantou"></text>
+      </block>
+    </view>
     <view class="maps_tabs_view" wx:for="{{mapList}}" wx:key="{{index}}" data-item="{{item}}" bindtap="tapMapsScrollView">
       <block>
         <view class="title_text">{{item.value}}</view>
