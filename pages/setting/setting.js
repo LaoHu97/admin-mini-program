@@ -10,6 +10,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '设置'
     })
+  },
+  onShow:function () {
     this.setData({
       name: app.globalData.userInfo.name,
       account: app.globalData.userInfo.account

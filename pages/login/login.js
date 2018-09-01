@@ -16,38 +16,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '帐号登录'
     })
-    try {
-      let accountInfo = wx.getStorageSync('accountInfo')
-      if (accountInfo) {
-        this.setData({
-          loginButtonLoading: true,
-          loginButtonDisabled: true
-        })
-        let para = {
-          account: accountInfo.account,
-          password: accountInfo.password
-        }
-        api.loginApp(para).then(res=>{
-          if (res.status === 200) {
-            app.globalData.userInfo = res.data
-            wx.setStorage({
-              key: "accountInfo",
-              data: para
-            })
-            wx.switchTab({
-              url: '../index/index'
-            })
-          }
-        }).then(res=>{
-          this.setData({
-            loginButtonLoading: false,
-            loginButtonDisabled: false
-          })
-        })
-      }
-    } catch (error) {
-      console.log('错误：' + error)
-    }
   },
   bindFocusInput () {
     this.setData({

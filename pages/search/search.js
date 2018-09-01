@@ -11,8 +11,10 @@ Page({
   },
   onLoad () {
     wx.setNavigationBarTitle({
-      title: '门店搜索'
+      title: '搜索'
     })
+  },
+  onShow:function () {
     this.setData({
       storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
       inputPlaceholder: app.globalData.userInfo.sid ? '请输入款台名称关键字' : '请输入门店名称关键字'

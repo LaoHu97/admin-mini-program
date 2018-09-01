@@ -62,6 +62,9 @@
   <view class="page_list">
     <scroll-view scroll-y style="height:{{windowHeight - 230}}px" enable-back-to-top bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" class="page_list_scroll">
       <view wx:if="{{pageListObjectArray.length}}">
+        <!-- <view class="loading" wx:if="{{!loadingTop}}">
+          <image class="img_loading" src="../../assets/images/Spinner-1.2s-46px.gif" />
+        </view> -->
         <navigator class="list" wx:for="{{pageListObjectArray}}" url="/pages/details/details?id={{item.id}}&orderId={{item.orderId}}&type={{currentTab}}" wx:key="index" hover-class="list_hover_class">
           <view class="list_left">
             <text class="iconfont {{common.formatPaymentIco(item.payWay)}}"></text>

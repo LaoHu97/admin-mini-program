@@ -40,3 +40,6 @@
   border-bottom: 1rpx solid #F2F6FC;
   padding: 0 20rpx;
 }
+.search .search_hover{
+  background-color: #1988fb;
+}

@@ -46,15 +46,13 @@ Page({
     startDatePick1: '',
     endDatePick1: '',
     startDatePick2: '',
-    endDatePick2: ''
+    endDatePick2: '',
+
+    loadingTop: true
   },
   onLoad: function () {
     wx.setNavigationBarTitle({
       title: '交易查询'
-    })
-    this.setData({
-      storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
-      storeNameHidden: app.globalData.userInfo.eid ? true : false
     })
     computed(this, {
 
@@ -100,6 +98,11 @@ Page({
       })
     } catch (error) {
       console.log('选择全部门店')
+      this.setData({
+        storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
+        storeValue: '',
+        storeNameHidden: app.globalData.userInfo.eid ? true : false
+      })
     }
     this.getUserList()
   },
@@ -189,7 +192,8 @@ Page({
             allPage: res.data.totalCount,
             loadDone: res.data.totalCount <= 10 ? false : true,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow
+            countRow: res.data.countRow,
+            loadingTop: true
           })
         } else {
           let comms = res.data.orderList
@@ -202,7 +206,8 @@ Page({
             pageListObjectArray: list || [],
             allPage: res.data.totalCount,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow
+            countRow: res.data.countRow,
+            loadingTop: true
           })
         }
       }
@@ -221,7 +226,8 @@ Page({
             allPage: res.data.totalCount,
             loadDone: res.data.totalCount <= 10 ? false : true,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow
+            countRow: res.data.countRow,
+            loadingTop: true
           })
         } else {
           let comms = res.data.orderList
@@ -234,7 +240,8 @@ Page({
             pageListObjectArray: list || [],
             allPage: res.data.totalCount,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow
+            countRow: res.data.countRow,
+            loadingTop: true
           })
         }
       }
@@ -278,9 +285,9 @@ Page({
     this.getUserList()
   },
   bindscrolltoupper() {
-    console.log('我被拉到顶部了')
     this.setData({
-      pageNum: '1'
+      pageNum: '1',
+      loadingTop: false
     })
     this.getUserList()
   }

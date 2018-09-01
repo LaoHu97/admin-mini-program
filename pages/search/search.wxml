@@ -5,7 +5,7 @@
       <input placeholder="{{inputPlaceholder}}" bindinput="searchInput" maxlength="10" value="{{searchInputValue}}" placeholder-style="font-size: 24rpx;" confirm-type="search" focus />
       <icon type="clear" wx:if="{{searchInputValue!=''}}" bindtap="delText" class="search_del" size="16" />
     </view>
-    <button size="mini" class="search_button" bindtap="getMapList" type="primary">搜索</button>
+    <button size="mini" class="search_button" hover-class="search_hover" bindtap="getMapList" type="primary">搜索</button>
   </view>
   <view wx:if="{{searchResult}}">
     <view class="maps_tabs_view" bindtap="tapMapsScrollView">

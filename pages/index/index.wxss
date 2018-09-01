@@ -1,3 +1,4 @@
+
 page{
   overflow-y: none!important;
 }
@@ -164,4 +165,12 @@ page{
   font-size: 28rpx;
   text-align: center;
   line-height: 5;
+}
+.loading{
+  height:32px;
+  text-align: center;
+}
+.img_loading{
+  width: 32px;
+  height: 32px;
 }
