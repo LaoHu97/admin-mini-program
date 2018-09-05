@@ -6,17 +6,35 @@ const md5 = require('../../utils/md5')
 Page({
   data: {
     orderId: '',
+    amount: '',
     btntext: '获取验证码',
     buttonType: 'primary',
-    buttonDisabled: false
+    buttonDisabled: false,
+    stop: ''
   },
   onLoad(item) {
-    wx.setNavigationBarTitle({
-      title: '退款'
-    })
+    console.log(item)
     this.setData({
-      orderId: item.orderId
+      orderId: item.orderId,
+      amount: item.amount
     })
+  },
+  code () {
+    let _this = this
+    let coden = 60
+    let codeV = setInterval(function () {
+      _this.setData({
+        btntext: '重新获取' + (--coden) + 's'
+      })
+      if (coden == 0 || _this.data.stop) {
+        clearInterval(codeV)
+        _this.setData({
+          btntext: '获取验证码',
+          buttonType: 'primary',
+          buttonDisabled: false
+        })
+      }
+    }, 1000)
   },
   clickCode() {
     let para = {
@@ -26,26 +44,13 @@ Page({
     }
     api.sendVerCodeT(para).then(res => {
       if (res.status === 200) {
-        let coden = 60
-        let _this = this
-        _this.setData({
+        this.code()
+        this.setData({
           btntext: '重新获取60s',
           buttonType: 'default',
-          buttonDisabled: true
+          buttonDisabled: true,
+          stop: ''
         })
-        let codeV = setInterval(function () {
-          _this.setData({
-            btntext: '重新获取' + (--coden) + 's'
-          })
-          if (coden == 0) {
-            clearInterval(codeV)
-            _this.setData({
-              btntext: '获取验证码',
-              buttonType: 'primary',
-              buttonDisabled: false
-            })
-          }
-        }, 1000) 
       }
     })
   },
@@ -61,9 +66,13 @@ Page({
         icon: 'none'
       })
     } else {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       let para = {
         orderId: this.data.orderId,
-        amount: e.detail.value.amount,
+        amount: e.detail.value.amount || this.data.amount,
         verCode: e.detail.value.code,
         desc: '',
         passWord: md5.hexMD5(e.detail.value.password + app.globalData.userInfo.account),
@@ -71,7 +80,11 @@ Page({
         roleId: app.globalData.userInfo.roleId
       }
       api.refund(para).then(res => {
+        this.setData({
+          stop: 'stop'
+        })
         if (res.status === 200) {
+          wx.hideLoading()
           wx.showToast({
             title: '退款成功',
             icon: 'success',
@@ -79,7 +92,7 @@ Page({
             success:function () {
               setTimeout(() => {
                 wx.navigateBack({
-                  delta: 1
+                  delta: 2
                 })
               }, 2000)
             }

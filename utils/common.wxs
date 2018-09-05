@@ -3,7 +3,7 @@ var formatPayment = function (data) {
 }
 
 var formatPaymentIco = function (data) {
-  return data === 'WX' ? 'icon-weixinzhifu2' : data === 'ALI' ? '支付宝' : data === 'DEBIT' ? '借记卡' : data === 'CREDIT' ? '贷记卡' : data === 'BEST' ? '翼支付' : data === 'UNIONPAY' ? '银联二维码' : data === 'BANK' ? '银行卡' : '其它';
+  return data === 'WX' ? 'icon-weixinzhifu2' : data === 'ALI' ? 'icon-zhifubao1' : data === 'DEBIT' ? 'icon-card' : data === 'CREDIT' ? 'icon-cardb' : data === 'BEST' ? 'icon-paybest' : data === 'UNIONPAY' ? 'icon-yinlian1193427easyiconnet' : data === 'BANK' ? 'icon-card' : 'icon-card';
 }
 
 module.exports = {

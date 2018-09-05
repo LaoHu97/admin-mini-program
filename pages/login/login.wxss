@@ -46,4 +46,5 @@
   background: url('https://s1.ax1x.com/2018/08/23/PTsihq.png') no-repeat;
   background-size: 100%;
   background-position-y: 100%; 
+  background-color: #f2f6fc;
 }

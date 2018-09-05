@@ -16,7 +16,6 @@
   font-size: 38rpx;
   padding: 0 10rpx;
   font-weight: bolder;
-  color: #409EFF;
 }
 .page_main_list{
   display: flex;

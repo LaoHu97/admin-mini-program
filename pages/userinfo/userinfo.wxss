@@ -1,0 +1,12 @@
+.page_main{
+  background-color: #fff;
+  width: 95%;
+}
+.page_main_list{
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 20rpx;
+}

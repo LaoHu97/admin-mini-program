@@ -10,19 +10,35 @@ Page({
     loginButtonDisabled: false,
     loginButtonLoading: false,
     accountInputFocus: true,
-    passwordInputFocus: false
-  },
-  onLoad () {
-    wx.setNavigationBarTitle({
-      title: '帐号登录'
-    })
+    passwordInputFocus: false,
+    account: '',
+    password: ''
   },
   bindFocusInput () {
     this.setData({
       placeholderInput: 'placeholder_input'
     })
   },
+  onShow: function () {
+    console.log(app.globalData)
+  },
   loginFormSubmit (e) {
+    if (!e.detail.value.account) {
+      wx.showToast({
+        title: '用户名不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    if (!e.detail.value.password) {
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     this.setData({
       loginButtonLoading: true,
       loginButtonDisabled: true
@@ -31,7 +47,8 @@ Page({
       account: e.detail.value.account,
       password: md5.hexMD5(e.detail.value.password + e.detail.value.account)
     }
-    api.loginApp(para).then(res=>{
+    let accountInfo = wx.getStorageSync('accountInfo')
+    api.loginApp(accountInfo || para).then(res=>{
       if (res.status === 200) {
         app.globalData.userInfo = res.data
         wx.setStorage({
@@ -45,7 +62,9 @@ Page({
     }).then(res=>{
       this.setData({
         loginButtonLoading: false,
-        loginButtonDisabled: false
+        loginButtonDisabled: false,
+        account: '',
+        password: ''
       })
     })
   },

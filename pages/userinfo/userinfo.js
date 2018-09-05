@@ -14,15 +14,5 @@ Page({
       name: app.globalData.userInfo.name,
       account: app.globalData.userInfo.account
     })
-  },
-  logOut () {
-    wx.clearStorage({
-      success:function () {
-        wx.redirectTo({
-          url: '../login/login'
-        })
-        app.resetSubmit()
-      }
-    })
   }
 })

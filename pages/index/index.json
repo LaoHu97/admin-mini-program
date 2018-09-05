@@ -1,8 +1,9 @@
 {
+  "navigationBarTitleText": "交易查询",
   "usingComponents": {
     "dialog-popup": "/components/Popup/index",
     "pay-ment": "/components/PayMent/index",
     "select-store": "/components/SelectStore/index"
   },
-  "disableScroll": true
+  "enablePullDownRefresh": true
 }

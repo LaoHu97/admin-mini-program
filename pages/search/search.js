@@ -9,11 +9,6 @@ Page({
     storeName: '全部门店',
     inputPlaceholder: ''
   },
-  onLoad () {
-    wx.setNavigationBarTitle({
-      title: '搜索'
-    })
-  },
   onShow:function () {
     this.setData({
       storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
@@ -39,7 +34,6 @@ Page({
       storeId: app.globalData.userInfo.sid,
       ename: this.data.searchInputValue
     }
-    console.log(app.globalData.userInfo);
     if (app.globalData.userInfo.role ==='shop') {
       this.getStore(para) 
     } else {
@@ -51,7 +45,7 @@ Page({
       if (res.status === 200) {
         this.setData({
           mapList: res.data.storeList,
-          searchResult: true
+          searchResult: res.data.storeList.length ? true : false
         })
       } else {
         this.setData({
@@ -65,7 +59,7 @@ Page({
       if (res.status === 200) {
         this.setData({
           mapList: res.data.emplyeeList,
-          searchResult: true
+          searchResult: res.data.emplyeeList.length ? true : false
         })
       } else {
         this.setData({
@@ -75,7 +69,9 @@ Page({
     })
   },
   tapMapsScrollView (item) {
-    app.globalData.storeData = item || null
+    console.log(item);
+    
+    app.globalData.storeData = item.currentTarget.dataset.item || null
     wx.switchTab({
       url: '../index/index'
     })

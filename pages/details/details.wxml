@@ -1,10 +1,10 @@
 <view class="page">
   <view class="page_main">
     <view class="page_main_list_top">
-      <icon type="success" color="#409EFF" size="36"/>
-      <text>收款成功</text>
+      <icon type="{{orderType ? 'success' : 'warn'}}" color="#409EFF" color="{{orderType ? '#409EFF' : '#FD9900'}}" size="36"/>
+      <text style="color:{{orderType ? '#409EFF' : '#FD9900'}}">{{orderType ? '收款成功' : '退款成功'}}</text>
     </view>
-    <view class="page_main_list" wx:for="{{detailsArray}}" wx:key="{{index}}">
+    <view class="page_main_list" wx:for="{{detailsArray}}" wx:key="{{index}}" hidden="{{item.hidden}}">
       <text>{{item.name}}</text>
       <text>{{item.value}}</text>
     </view>

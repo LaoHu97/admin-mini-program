@@ -1,7 +1,4 @@
 
-page{
-  overflow-y: none!important;
-}
 .header{
   width: 100%;
   height: 100rpx;
@@ -108,8 +105,25 @@ page{
 }
 .list_left .iconfont{
   font-size: 64rpx;
-  color: #2C8E34;
   margin: 0 20rpx;
+}
+.icon-weixinzhifu2{
+  color: #2C8E34;
+}
+.icon-zhifubao1{
+  color: #1988fb;
+}
+.icon-card{
+  color: steelblue;
+}
+.icon-cardb{
+  color: tomato;
+}
+.icon-yinlian1193427easyiconnet{
+  color: teal;
+}
+.icon-paybest{
+  color: red;
 }
 .list_right{
   display: flex;

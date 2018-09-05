@@ -9,7 +9,7 @@ Page({
   data: {
     pageListObjectArray: [],
     pageMentRadioItems: [
-      { name: '默认', value: ' ', checked: 'true' },
+      { name: '全部', value: 'ALL', checked: 'true' },
       { name: '微信', value: 'WX' },
       { name: '支付宝', value: 'ALI' },
       { name: '翼支付', value: 'BEST' },
@@ -18,14 +18,14 @@ Page({
       { name: '银联二维码', value: 'UNIONPAY' }
     ],
     pageStatusRadioItems: [
-      { name: '默认', value: '2', checked: 'true' },
+      { name: '全部', value: '2', checked: 'true' },
       { name: '收款成功', value: '0' },
       { name: '退款成功', value: '1' }
     ],
     startTime: '00:00',
     endTime: '23:59',
 
-    storeName: '',
+    storeName: '全部门店',
     storeNameHidden: false,
     storeValue: '',
     payWay: '',
@@ -35,8 +35,6 @@ Page({
     allPage: 0,  // 总条数
     loadDone: true,
 
-    winWidth: 0,
-    winHeight: 0,
     // tab切换
     currentTab: 0,
 
@@ -46,25 +44,29 @@ Page({
     startDatePick1: '',
     endDatePick1: '',
     startDatePick2: '',
-    endDatePick2: '',
-
-    loadingTop: true
+    endDatePick2: ''
   },
   onLoad: function () {
-    wx.setNavigationBarTitle({
-      title: '交易查询'
-    })
-    computed(this, {
-
-    })
+    if (app.globalData.userInfo) {
+      this.getUserList()
+    } else {
+      app.userInfoReadyCallback = res => {
+        this.getUserList()
+        this.setData({
+          storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
+          storeValue: '',
+          storeNameHidden: app.globalData.userInfo.eid ? true : false
+        })
+      }
+    }
     watch(this, {
-      currentTab(val){
+      currentTab(val) {
         if (val === '1') {
           this.setData({
-            startDatePick1: util.dateFormat(Date.parse(new Date()) - 90*24*60*60*1000, 'YYYY-MM-DD'),
-            endDatePick1: util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD'),
-            startDatePick2: util.dateFormat(Date.parse(new Date()) - 90*24*60*60*1000, 'YYYY-MM-DD'),
-            endDatePick2: util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD')
+            startDatePick1: util.dateFormat(Date.parse(new Date()) - 90 * 24 * 60 * 60 * 1000, 'YYYY-MM-DD'),
+            endDatePick1: util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD'),
+            startDatePick2: util.dateFormat(Date.parse(new Date()) - 90 * 24 * 60 * 60 * 1000, 'YYYY-MM-DD'),
+            endDatePick2: util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
           })
         } else {
           this.setData({
@@ -77,6 +79,11 @@ Page({
       }
     })
   },
+  onHide: function () {
+    app.resetSubmit = res => {
+      this.resetSubmit()
+    }
+  },
   onShow: function () {
     // 页面显示
     let vm = this
@@ -85,23 +92,17 @@ Page({
         vm.setData({
           windowHeight: res.windowHeight
         })
-        vm.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight
-        });
       }
     })
-    try {
-      vm.setData({
-        storeName: app.globalData.storeData.target.dataset.item.value || ' ',
-        storeValue: app.globalData.storeData.target.dataset.item.id || app.globalData.storeData.target.dataset.item.eid
+    if (app.globalData.storeData) {
+      this.setData({
+        storeName: app.globalData.storeData.value,
+        storeValue: app.globalData.storeData.id
       })
-    } catch (error) {
-      console.log('选择全部门店')
+    } else {
       this.setData({
         storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
-        storeValue: '',
-        storeNameHidden: app.globalData.userInfo.eid ? true : false
+        storeValue: ''
       })
     }
     this.getUserList()
@@ -112,18 +113,15 @@ Page({
     })
   },
 
-  /**
-   * 点击tab切换
-   */
   swichNav: function (e) {
     let startTime = ''
     let endTime = ''
     if (e.target.dataset.current == 0) {
-      startTime = '00:00',
+      startTime = '00:00'
       endTime = '23:59'
-    }else{
-      startTime = util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD'),
-      endTime = util.dateFormat(Date.parse(new Date()) - 24*60*60*1000, 'YYYY-MM-DD')
+    } else {
+      startTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
+      endTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
     }
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
@@ -139,7 +137,6 @@ Page({
       this.getUserList()
     }
   },
-
   clickSearch() {
     this.setData({
       pageShowDialog: true
@@ -149,8 +146,28 @@ Page({
     })
   },
   searchSubmit() {
+    let startTime = ''
+    let endTime = ''
+    if (this.data.currentTab == 0) {
+      startTime = Date.parse(util.dateFormat(new Date(), 'YYYY/MM/DD', '/') + ' ' + this.data.startTime + ':00').toString()
+      endTime = Date.parse(util.dateFormat(new Date(), 'YYYY/MM/DD', '/') + ' ' + this.data.endTime + ':59').toString()
+    } else {
+      startTime = Date.parse(this.data.startTime.replace(/-/g, '/') + ' ' + '00:00:00').toString()
+      endTime = Date.parse(this.data.endTime.replace(/-/g, '/') + ' ' + '23:59:59').toString()
+    }
+    if (startTime > endTime) {
+      wx.showToast({
+        title: '结束时间不能小于起始时间',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     this.setData({
-      pageShowDialog: false
+      pageShowDialog: false,
+      pageListObjectArray: [],
+      pageNum: 1,
+      allPage: 0
     })
     wx.showTabBar({
       animation: true
@@ -165,7 +182,7 @@ Page({
       roleId: app.globalData.userInfo.roleId,
       role: app.globalData.userInfo.role,
       orderType: this.data.orderType,
-      payWay: this.data.payWay,
+      payWay: this.data.payWay === 'ALL' ? '' : this.data.payWay,
       pageNum: this.data.pageNum.toString(),
       numPerPage: this.data.numPerPage.toString()
     }
@@ -179,7 +196,7 @@ Page({
       this.queryHistory(para)
     }
   },
-  queryRealtime (item) {
+  queryRealtime(item) {
     api.queryOrder(item).then(res => {
       if (res.status === 200) {
         if (this.data.pageNum == 1) {
@@ -192,8 +209,7 @@ Page({
             allPage: res.data.totalCount,
             loadDone: res.data.totalCount <= 10 ? false : true,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow,
-            loadingTop: true
+            countRow: res.data.countRow
           })
         } else {
           let comms = res.data.orderList
@@ -206,14 +222,13 @@ Page({
             pageListObjectArray: list || [],
             allPage: res.data.totalCount,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow,
-            loadingTop: true
+            countRow: res.data.countRow
           })
         }
       }
     })
   },
-  queryHistory (item) {
+  queryHistory(item) {
     api.queryOrderHistory(item).then(res => {
       if (res.status === 200) {
         if (this.data.pageNum == 1) {
@@ -226,8 +241,7 @@ Page({
             allPage: res.data.totalCount,
             loadDone: res.data.totalCount <= 10 ? false : true,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow,
-            loadingTop: true
+            countRow: res.data.countRow
           })
         } else {
           let comms = res.data.orderList
@@ -240,8 +254,7 @@ Page({
             pageListObjectArray: list || [],
             allPage: res.data.totalCount,
             sumAmt: res.data.sumAmt,
-            countRow: res.data.countRow,
-            loadingTop: true
+            countRow: res.data.countRow
           })
         }
       }
@@ -268,11 +281,25 @@ Page({
       endTime: e.detail.value
     })
   },
-  bindscrolltolower() {
-    console.log('我被拉到地步了')
-    console.log(`总条数：${this.data.allPage}`);
-    console.log(`列表条数：${this.data.pageListObjectArray.length}`)
+  resetSubmit () {
+    let startTime = ''
+    let endTime = ''
     
+    if (this.data.currentTab == 0) {
+      startTime = '00:00'
+      endTime = '23:59'
+    } else  if (this.data.currentTab == 1) {
+      startTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
+      endTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
+    }
+    this.setData({
+      startTime : startTime,
+      endTime : endTime,
+      pageMentRadioItems: this.data.pageMentRadioItems,
+      pageStatusRadioItems: this.data.pageStatusRadioItems
+    })
+  },
+  bindscrolltolower() {
     if (this.data.allPage == this.data.pageListObjectArray.length) {
       this.setData({
         loadDone: false
@@ -284,11 +311,18 @@ Page({
     })
     this.getUserList()
   },
-  bindscrolltoupper() {
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
     this.setData({
-      pageNum: '1',
-      loadingTop: false
+      pageNum: '1'
     })
     this.getUserList()
+    setTimeout(() => {
+      wx.showToast({
+        title: '刷新成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }, 800)
   }
 })

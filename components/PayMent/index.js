@@ -3,6 +3,10 @@ Component({
     radioItems: {
       type: Array,
       value: []
+    },
+    payTitle: {
+      type: String,
+      value: '支付方式'
     }
   },
   data: {

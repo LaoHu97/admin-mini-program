@@ -1,10 +1,10 @@
 //app.js
 const api = require('./api/api')
 App({
-  onShow: function () {
+  onLaunch: function () {
     this.getLogin()
   },
-  getLogin () {
+  getLogin (cb) {
     try {
       let accountInfo = wx.getStorageSync('accountInfo')
       if (accountInfo) {
@@ -19,8 +19,19 @@ App({
               key: "accountInfo",
               data: para
             })
-            wx.switchTab({
-              url: '/pages/index/index'
+            if (this.userInfoReadyCallback) {
+              this.userInfoReadyCallback(res.data)
+            }
+          }
+        })
+      }else{
+        wx.redirectTo({
+          url: '/pages/login/login',
+          success () {
+            wx.showToast({
+              title: '尚未登陆，请重新登录',
+              icon: 'none',
+              duration: 2000
             })
           }
         })

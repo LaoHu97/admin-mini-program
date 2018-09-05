@@ -45,7 +45,6 @@
   font-size: 40rpx;
   margin-right: 10rpx;
   color: #fff;
-  background-color: #f00;
   padding: 10rpx;
   border-radius: 8rpx;
 }
@@ -59,4 +58,10 @@
 }
 .page_main_hover{
   background-color: #DCDFE6;
+}
+.icon-tuichu{
+  background-color: #f00;
+}
+.icon-xinxi{
+  background-color: #409EFF;
 }

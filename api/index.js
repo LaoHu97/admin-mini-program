@@ -1,18 +1,30 @@
+// wx.cloud.init()
+
 const app = getApp()
+// const db = wx.cloud.database()
+// const logs = db.collection('logs')
 
 const wxHttp = params => {
-  wx.showLoading({
-    title: '加载中',
-    mask: true
-  })
+  // wx.showLoading({
+  //   title: '加载中',
+  //   mask: true
+  // })
   let promise = new Promise(function (resolve, reject) {
-    console.log(params)
     wx.request({
       url: params.url,
       data: params.data,
       method: params.method,
       success (res) {
-        wx.hideLoading()
+        // logs.add({
+        //   data:{
+        //     date: new Date(),
+        //     response: params,
+        //     request:res
+        //   }
+        // }).then(res => {
+        //   console.log(res)
+        // })
+        // wx.hideLoading()
         if (res.statusCode !== 200) {
           wx.showToast({
             title: '请检查网络连接',

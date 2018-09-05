@@ -5,11 +5,11 @@
   <form class="page_login_form" bindsubmit="loginFormSubmit">
     <view class="page_form_account">
       <text class='iconfont icon-yonghuming'></text>
-      <input placeholder="商户号/门店号/款台" bindconfirm="bindConfirmAccount" name="account" confirm-type="next" adjust-position focus="{{accountInputFocus}}" />
+      <input placeholder="商户号/门店号/款台" bindconfirm="bindConfirmAccount" value="{{account}}" name="account" confirm-type="next" adjust-position focus="{{accountInputFocus}}" />
     </view>
     <view class="page_form_password">
       <text class='iconfont icon-mima'></text>
-      <input placeholder="密码" password name="password" confirm-type="go" focus="{{passwordInputFocus}}" adjust-position />
+      <input placeholder="密码" password name="password" confirm-type="go" value="{{password}}" focus="{{passwordInputFocus}}" adjust-position />
     </view>
     <view class="page_form_submit">
       <button type="primary" loading="{{loginButtonLoading}}" disabled="{{loginButtonDisabled}}" hover-class="other-button-hover" formType="submit">
