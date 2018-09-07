@@ -39,6 +39,12 @@ const wxHttp = params => {
           }
           resolve(res)
         }
+      },
+      fail () {
+        wx.showToast({
+          title: '请检查网络连接',
+          icon: 'none'
+        })
       }
     })
   })

@@ -52,11 +52,11 @@
   <view class="header_count">
     <view class="header_count_left">
       <text class="header_count_amount">{{sumAmt}}</text>
-      <text class="header_count_title">交易金额（元）</text>
+      <view class="header_count_title">交易金额（元）<tooltip tooltipText="{{tooltipText}}"><text class="iconfont icon-iconfontquestion"></text></tooltip></view>
     </view>
     <view class="header_count_left">
       <text class="header_count_amount">{{countRow}}</text>
-      <text class="header_count_title">交易笔数（笔）</text>
+      <view class="header_count_title">交易笔数（笔）</view>
     </view>
   </view>
   <view class="page_list">

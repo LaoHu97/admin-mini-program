@@ -1,0 +1,6 @@
+<block>
+  <view class="main" bindtap="clickTooltip">
+    <view class="tooltiptext" hidden="{{textHidden}}">{{tooltipText}}</view>
+    <slot class="tooltip"></slot>
+  </view>
+</block>

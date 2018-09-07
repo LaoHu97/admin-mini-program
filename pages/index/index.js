@@ -44,7 +44,9 @@ Page({
     startDatePick1: '',
     endDatePick1: '',
     startDatePick2: '',
-    endDatePick2: ''
+    endDatePick2: '',
+
+    tooltipText: '注：交易金额等于收款金额减退款金额'
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -261,14 +263,14 @@ Page({
     })
   },
   onMyMentEvent(e) {
-    console.log(e)
     this.setData({
       payWay: e.detail
     })
   },
   onMyStatusEvent(e) {
     this.setData({
-      orderType: e.detail
+      orderType: e.detail,
+      tooltipText: e.detail === '2' ? '注：交易金额等于收款金额减退款金额' : e.detail === '0' ? '注：交易金额等于收款金额' : e.detail === '1' ? '注：交易金额等于退款金额' : '注：暂无说明'
     })
   },
   bindStartDateChange(e) {
