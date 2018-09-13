@@ -7,10 +7,6 @@
         <input name="amount" type="digit" placeholder="默认全额退款" focus/>
       </view>
     </view>
-    <view class="page_from_password">
-      <text>登录密码</text>
-      <input password name="password" placeholder="请输入登陆密码" />
-    </view>
     <view class="page_from_verify">
       <text>验证码</text>
       <input name="code" placeholder="请输入验证码" />

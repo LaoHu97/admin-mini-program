@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "登陆",
-  "enablePullDownRefresh": false,
-  "disableScroll": true
+  "navigationBarTitleText": "选择登陆账号",
+  "enablePullDownRefresh": false
 }

@@ -22,7 +22,7 @@
     </view>
     <dialog-popup showDialog="{{pageShowDialog}}">
       <scroll-view scroll-y style="height:{{windowHeight + 50}}px">
-        <pay-ment radioItems="{{pageMentRadioItems}}" payTitle="支付方式" bindmyevent="onMyMentEvent"></pay-ment>
+        <pay-ment radioItems="{{pageMentRadioItems}}" payTitle="支付方式" id="payment" bindmyevent="onMyMentEvent"></pay-ment>
         <view>
           <text class="select_date_title">选择日期</text>
           <view class="select_date">
@@ -39,7 +39,7 @@
             </picker>
           </view>
         </view>
-        <pay-ment radioItems="{{pageStatusRadioItems}}" payTitle="交易状态" bindmyevent="onMyStatusEvent"></pay-ment>
+        <pay-ment radioItems="{{pageStatusRadioItems}}" payTitle="交易状态" id="paystatus" bindmyevent="onMyStatusEvent"></pay-ment>
         <view class="bottom_main">
           <button type="primary" bindtap="searchSubmit" hover-class="bottom_main_button_hover">
             确 定

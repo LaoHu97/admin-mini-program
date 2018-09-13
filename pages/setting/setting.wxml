@@ -1,21 +1,30 @@
 <!-- logs.wxml -->
 <view class="setting_page">
   <view class="page_top">
-    <image class="page_top_img" mode="aspectFit" src="https://s1.ax1x.com/2018/08/28/POS9QH.png"></image>
-    <view>
-      {{name}}
-    </view>
+    <image class="page_top_img" mode="aspectFit" src="{{avatarUrl}}"></image>
+    <view>{{name}}</view>
   </view>
   <view class="page_main">
     <navigator class="page_main_list" url="../userinfo/userinfo" hover-class="page_main_hover">
       <view class="page_main_list_left">
         <text class='iconfont icon-xinxi'></text>
-        <view>商户信息</view>
+        <view>账户信息</view>
       </view>
       <view class="page_main_list_right">
         <text class='iconfont icon-jiantou'></text>
       </view>
     </navigator>
+  </view>
+  <view class="page_main">
+    <view class="page_main_list" bindtap="logOutBind" hover-class="page_main_hover">
+      <view class="page_main_list_left">
+        <text class='iconfont icon-htmal5icon33'></text>
+        <view>解除绑定</view>
+      </view>
+      <view class="page_main_list_right">
+        <text class='iconfont icon-jiantou'></text>
+      </view>
+    </view>
   </view>
   <view class="page_main">
     <view class="page_main_list" bindtap="logOut" hover-class="page_main_hover">

@@ -1,50 +1,64 @@
-
-.iconfont{
-  line-height: 70rpx;
-  color:#409EFF;
-  font-size:45rpx;
+page {
+  height: auto;
+  min-height: 100%;
 }
-.page_top_icon{
-  width: 380rpx;
-  height: 200rpx;
-}
-.page_form_account,.page_form_password{
-  display: flex;
-  flex-direction: row;
-  border-bottom: 2rpx solid #909399;
-  height: 68rpx;
-}
-.page_form_account input,.page_form_password input{
-  height:32px;
-  line-height:32rpx;
-}
-.page_form_password{
-  margin-top: 35rpx;
-}
-.input-placeholder{
-  font-size: 28rpx;
-}
-.page_form_submit{
-  margin-top: 35rpx;
-}
-
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: #1988fb;
-  color: #fff;
-}
-
-.page_login_form{
-  width: 550rpx;
-}
-.main_page{
+.login_page{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
-  background: url('https://s1.ax1x.com/2018/08/23/PTsihq.png') no-repeat;
-  background-size: 100%;
-  background-position-y: 100%; 
-  background-color: #f2f6fc;
+}
+.login_page h3{
+  margin-top: 60rpx;
+  font-size: 48rpx;
+}
+.login_page h5{
+  font-size: 28rpx;
+  line-height: 100rpx;
+  color: #909399;
+}
+.login_page button{
+  width: 90%;
+  margin-top: 100rpx;
+}
+.login_page .button-hover{
+  background-color: #1988fb;
+}
+.user_list{
+  width: 90%;
+}
+.user_list_page{
+  background-color: #fff;
+  height: 150rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+  padding: 0 10rpx;
+}
+.user_list_page_name{
+  color: #909399;
+  font-size: 28rpx;
+}
+.user_list_page_hover{
+  background-color: #EBEEF5;
+}
+.login_page .main_page_btn{
+  background-color: #f8f8f8;
+  color: #409EFF;
+  font-size: 28rpx;
+  margin-bottom: 45rpx;
+}
+.login_page .main_page_btn::after{
+  border: none;
+}
+.user_list_page_left{
+  line-height: 1.5;
+}
+.user_list_page_name_left{
+ padding: 2rpx 20rpx;
+ background-color: #409EFF;
+ border-radius: 100rpx;
+ color: #fff;
 }

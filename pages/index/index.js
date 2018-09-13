@@ -49,18 +49,11 @@ Page({
     tooltipText: '注：交易金额等于收款金额减退款金额'
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.getUserList()
-    } else {
-      app.userInfoReadyCallback = res => {
-        this.getUserList()
-        this.setData({
-          storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
-          storeValue: '',
-          storeNameHidden: app.globalData.userInfo.eid ? true : false
-        })
-      }
-    }
+    this.setData({
+      storeName: app.globalData.userInfo.loginUserInfo.role === 'store' ? '全部款台' : '全部门店',
+      storeValue: '',
+      storeNameHidden: app.globalData.userInfo.loginUserInfo.role === 'employee' ? true : false
+    })
     watch(this, {
       currentTab(val) {
         if (val === '1') {
@@ -99,14 +92,18 @@ Page({
     if (app.globalData.storeData) {
       this.setData({
         storeName: app.globalData.storeData.value,
-        storeValue: app.globalData.storeData.id
+        storeValue: app.globalData.storeData.id || app.globalData.storeData.eid
       })
     } else {
       this.setData({
-        storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
+        storeName: app.globalData.userInfo.loginUserInfo.role === 'store' ? '全部款台' : '全部门店',
+        storeNameHidden: app.globalData.userInfo.loginUserInfo.role === 'employee' ? true : false,
         storeValue: ''
       })
     }
+    this.setData({
+      pageNum: '1'
+    })
     this.getUserList()
   },
   bindPickerChange: function (e) {
@@ -181,8 +178,8 @@ Page({
       mid: app.globalData.userInfo.mid,
       sid: app.globalData.userInfo.sid || this.data.storeValue.toString(),
       eid: app.globalData.userInfo.eid || this.data.storeValue.toString(),
-      roleId: app.globalData.userInfo.roleId,
-      role: app.globalData.userInfo.role,
+      roleId: app.globalData.userInfo.loginUserInfo.role_id.toString(),
+      role: app.globalData.userInfo.loginUserInfo.role,
       orderType: this.data.orderType,
       payWay: this.data.payWay === 'ALL' ? '' : this.data.payWay,
       pageNum: this.data.pageNum.toString(),
@@ -283,23 +280,23 @@ Page({
       endTime: e.detail.value
     })
   },
-  resetSubmit () {
+  resetSubmit() {
     let startTime = ''
     let endTime = ''
-    
+
     if (this.data.currentTab == 0) {
       startTime = '00:00'
       endTime = '23:59'
-    } else  if (this.data.currentTab == 1) {
+    } else if (this.data.currentTab == 1) {
       startTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
       endTime = util.dateFormat(Date.parse(new Date()) - 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
     }
     this.setData({
-      startTime : startTime,
-      endTime : endTime,
-      pageMentRadioItems: this.data.pageMentRadioItems,
-      pageStatusRadioItems: this.data.pageStatusRadioItems
+      startTime: startTime,
+      endTime: endTime
     })
+    this.selectComponent('#payment').radioChange({ detail: { value: 'ALL' } })
+    this.selectComponent('#paystatus').radioChange({ detail: { value: '2' } })
   },
   bindscrolltolower() {
     if (this.data.allPage == this.data.pageListObjectArray.length) {

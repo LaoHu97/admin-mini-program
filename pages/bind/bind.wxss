@@ -1,0 +1,41 @@
+
+.iconfont{
+  line-height: 70rpx;
+  color:#409EFF;
+  font-size:45rpx;
+}
+.page_top_icon{
+  width: 380rpx;
+  height: 200rpx;
+}
+.page_form_account,.page_form_password{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2rpx solid #909399;
+  height: 68rpx;
+}
+.page_form_account input,.page_form_password input{
+  width: 100%;
+  height:32px;
+  line-height:32rpx;
+}
+.page_form_password{
+  margin-top: 45rpx;
+}
+.input-placeholder{
+  font-size: 34rpx;
+}
+.page_form_submit{
+  margin-top: 100rpx;
+}
+
+/** 添加自定义button点击态样式类**/
+.other-button-hover {
+  background-color: #1988fb;
+  color: #fff;
+}
+
+.page_login_form{
+  width: 90%;
+  margin-top: 100rpx;
+}

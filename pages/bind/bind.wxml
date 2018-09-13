@@ -1,0 +1,17 @@
+<view class="page">
+  <form class="page_login_form" bindsubmit="loginFormSubmit">
+    <view class="page_form_account">
+      <text class='iconfont icon-yonghuming'></text>
+      <input placeholder="账号" bindconfirm="bindConfirmAccount" value="{{account}}" type="text" name="account" confirm-type="next" focus="{{accountInputFocus}}" />
+    </view>
+    <view class="page_form_password">
+      <text class='iconfont icon-mima'></text>
+      <input placeholder="密码" password name="password" value="{{password}}" type="text" confirm-type="go" focus="{{passwordInputFocus}}" />
+    </view>
+    <view class="page_form_submit">
+      <button type="primary" hover-class="other-button-hover" formType="submit">
+        绑定
+      </button>
+    </view>
+  </form>
+</view>

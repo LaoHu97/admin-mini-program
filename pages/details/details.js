@@ -37,18 +37,13 @@ Page({
             { name: '订单号', value: res.data.order.orderId }
           )
           let is
-          console.log();
-          if (app.globalData.userInfo.role === 'employee') {
-            is = false
-          }else{
-            if (res.data.order.orderType === '0') {
-              is = true
-              if (res.data.order.status === '4') {
-                is = false
-              }
-            } else {
+          if (res.data.order.orderType === '0') {
+            is = true
+            if (res.data.order.status === '4') {
               is = false
             }
+          } else {
+            is = false
           }
           this.setData({
             detailsArray: list,

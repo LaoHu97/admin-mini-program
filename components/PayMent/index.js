@@ -16,7 +16,7 @@ Component({
     radioChangeDone (e) {
       this.triggerEvent('myevent', e)
     },
-    radioChange: function(e) {
+    radioChange (e) {
       let checked = e.detail.value
       let changed = {}
       for (let i = 0; i < this.data.radioItems.length; i ++) {

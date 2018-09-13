@@ -13,7 +13,6 @@ Page({
     stop: ''
   },
   onLoad(item) {
-    console.log(item)
     this.setData({
       orderId: item.orderId,
       amount: item.amount
@@ -55,36 +54,25 @@ Page({
     })
   },
   formSubmit (e) {
-    if (!e.detail.value.password) {
-      wx.showToast({
-        title: '请输入登陆密码',
-        icon: 'none'
-      })
-    } else if (!e.detail.value.code) {
+    if (!e.detail.value.code) {
       wx.showToast({
         title: '请输入验证码',
         icon: 'none'
       })
     } else {
-      wx.showLoading({
-        title: '加载中',
-        mask: true
-      })
       let para = {
         orderId: this.data.orderId,
         amount: e.detail.value.amount || this.data.amount,
         verCode: e.detail.value.code,
         desc: '',
-        passWord: md5.hexMD5(e.detail.value.password + app.globalData.userInfo.account),
-        role: app.globalData.userInfo.role,
-        roleId: app.globalData.userInfo.roleId
+        role: app.globalData.userInfo.loginUserInfo.role,
+        roleId: app.globalData.userInfo.loginUserInfo.roleId
       }
       api.refund(para).then(res => {
         this.setData({
           stop: 'stop'
         })
         if (res.status === 200) {
-          wx.hideLoading()
           wx.showToast({
             title: '退款成功',
             icon: 'success',

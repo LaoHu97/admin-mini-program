@@ -11,8 +11,8 @@ Page({
   },
   onShow:function () {
     this.setData({
-      storeName: app.globalData.userInfo.sid ? '全部款台' : '全部门店',
-      inputPlaceholder: app.globalData.userInfo.sid ? '请输入款台名称关键字' : '请输入门店名称关键字'
+      storeName: app.globalData.userInfo.loginUserInfo.role === 'store' ? '全部款台' : '全部门店',
+      inputPlaceholder: app.globalData.userInfo.loginUserInfo.role === 'store' ? '请输入款台名称关键字' : '请输入门店名称关键字'
     })
   },
   searchInput (e) {
@@ -27,14 +27,14 @@ Page({
   },
   getMapList () {
     let para = {
-      mid: app.globalData.userInfo.mid,
+      mid: app.globalData.userInfo.loginUserInfo.role_id.toString(),
       sname: this.data.searchInputValue
     }
     let value = {
-      storeId: app.globalData.userInfo.sid,
+      storeId: app.globalData.userInfo.loginUserInfo.role_id.toString(),
       ename: this.data.searchInputValue
     }
-    if (app.globalData.userInfo.role ==='shop') {
+    if (app.globalData.userInfo.loginUserInfo.role ==='shop') {
       this.getStore(para) 
     } else {
       this.getEmp(value)

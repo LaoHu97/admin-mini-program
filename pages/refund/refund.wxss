@@ -24,26 +24,6 @@
   background-color: #fff;
   border-bottom: 1rpx solid #DCDFE6;
 }
-.page_from_password{
-  margin: 20rpx 0;
-  background-color: #fff;
-  border-bottom: 1rpx solid #DCDFE6;
-  border-top: 1rpx solid #DCDFE6;
-  display: flex;
-  align-items: center;
-  font-size: 32rpx;
-  padding: 0 20rpx;
-  height: 2.58823529em;
-  line-height: 2.58823529em;
-}
-.page_from_password text{
-  width: 180rpx;
-}
-.page_from_password input{
-  height: 2.58823529em;
-  line-height: 2.58823529em;
-  width: 280rpx;
-}
 .page_from_verify{
   margin: 20rpx 0;
   background-color: #fff;

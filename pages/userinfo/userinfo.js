@@ -11,8 +11,8 @@ Page({
   },
   onShow:function () {
     this.setData({
-      name: app.globalData.userInfo.name,
-      account: app.globalData.userInfo.account
+      name: app.globalData.userInfo.loginUserInfo.role_name,
+      account: app.globalData.userInfo.loginUserInfo.account
     })
   }
 })

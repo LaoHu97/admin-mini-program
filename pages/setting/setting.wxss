@@ -1,7 +1,8 @@
+
 .setting_page{
   height: 100%;
   color: #303133;
-  background-color: #F2F6FC;
+  background-color: #f8f8f8;
 }
 .page_top{
   width: 100%;
@@ -22,10 +23,8 @@
 .page_top_img{
   background-color: #fff;
   border-radius: 500px;
-  width: 60rpx;
-  height: 60rpx;
-  padding: 20rpx;
-  margin-bottom: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 .page_main_list{
   display: flex;
@@ -64,4 +63,7 @@
 }
 .icon-xinxi{
   background-color: #409EFF;
+}
+.icon-htmal5icon33{
+  background-color: goldenrod;
 }

@@ -1,20 +1,18 @@
-<view class="main_page">
-  <view>
-    <image class="page_top_icon" mode="aspectFit" src="../../assets/icon/welcome_icon.png"></image>
+<view class="login_page">
+  <h3>欢迎使用悦收银助手</h3>
+  <h5>可方便、及时地查看经营数据，管理</h5>
+  <view class="user_list">
+      <view class="user_list_page" wx:for="{{userList}}" wx:key="{{index}}" data-useritem="{{item}}" bind:tap="clickUser" hover-class="user_list_page_hover">
+        <view class="user_list_page_left">
+          <view>{{item.role_name}}</view>
+          <view class="user_list_page_name">
+            <text class="user_list_page_name_left">{{item.role === 'shop' ? '商户账号' : item.role === 'store' ? '门店账号' : '款台账号'}}</text>
+            <text class="user_list_page_name_right">：{{item.account}}</text>
+          </view>
+        </view>
+        <view class="iconfont map_ico icon-jiantou"></view>
+      </view>
   </view>
-  <form class="page_login_form" bindsubmit="loginFormSubmit">
-    <view class="page_form_account">
-      <text class='iconfont icon-yonghuming'></text>
-      <input placeholder="商户号/门店号/款台" bindconfirm="bindConfirmAccount" value="{{account}}" name="account" confirm-type="next" adjust-position focus="{{accountInputFocus}}" />
-    </view>
-    <view class="page_form_password">
-      <text class='iconfont icon-mima'></text>
-      <input placeholder="密码" password name="password" confirm-type="go" value="{{password}}" focus="{{passwordInputFocus}}" adjust-position />
-    </view>
-    <view class="page_form_submit">
-      <button type="primary" loading="{{loginButtonLoading}}" disabled="{{loginButtonDisabled}}" hover-class="other-button-hover" formType="submit">
-        {{loginButtonLoading ? '正在登录' : '登 录'}}
-      </button>
-    </view>
-  </form>
+  <button wx:if="{{userList.length}}" class="main_page_btn" type="primary" hover-class="other-button-hover" open-type="getUserInfo" bindgetuserinfo="getUserInfo">绑定新账号</button>
+  <button wx:else type="primary" hover-class="other-button-hover" open-type="getUserInfo" bindgetuserinfo="getUserInfo">绑定新账号</button>
 </view>
