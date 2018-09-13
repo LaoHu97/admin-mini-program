@@ -44,7 +44,7 @@ Page({
       if (res.status === 200) {
         app.getUserList().then(res => {
           console.log(res)
-          wx.redirectTo({
+          wx.reLaunch({
             url: '../login/login',
             success: res => {
               wx.showToast({

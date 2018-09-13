@@ -1,4 +1,4 @@
-
+@import "../../lib//weui.wxss";
 .setting_page{
   height: 100%;
   color: #303133;
@@ -7,7 +7,7 @@
 .page_top{
   width: 100%;
   height: 300rpx;
-  background-color: #409EFF;
+  background: linear-gradient(to right, #409EFF , #1988fb);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,48 +22,24 @@
 }
 .page_top_img{
   background-color: #fff;
-  border-radius: 500px;
+  border-radius: 16rpx;
   width: 100rpx;
   height: 100rpx;
-}
-.page_main_list{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20rpx;
-  height: 100rpx;
-  background-color: #fff;
-}
-.page_main_list_left{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 30rpx;
-}
-.page_main_list_left .iconfont{
-  font-size: 40rpx;
-  margin-right: 10rpx;
-  color: #fff;
-  padding: 10rpx;
-  border-radius: 8rpx;
-}
-.page_main{
-  margin-top: 20rpx;
-  border-top: 1rpx solid #DCDFE6;
-  border-bottom: 1rpx solid #DCDFE6;
-}
-.page_main_list_right{
-  color: #DCDFE6;
+  border: 2rpx solid #fff;
 }
 .page_main_hover{
   background-color: #DCDFE6;
 }
-.icon-tuichu{
-  background-color: #f00;
+.iconfont{
+  font-size: 40rpx;
+  margin-right: 10rpx;
 }
-.icon-xinxi{
-  background-color: #409EFF;
+.icon-decoration_fill{
+  color: crimson
 }
-.icon-htmal5icon33{
-  background-color: goldenrod;
+.icon-unlock_fill{
+  color: coral;
+}
+.icon-businesscard_fill{
+  color: forestgreen
 }

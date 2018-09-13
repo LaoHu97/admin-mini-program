@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 804466 */
-  src: url('//at.alicdn.com/t/font_804466_gorgwgtklf7.eot');
-  src: url('//at.alicdn.com/t/font_804466_gorgwgtklf7.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_804466_gorgwgtklf7.woff') format('woff'),
-  url('//at.alicdn.com/t/font_804466_gorgwgtklf7.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_804466_gorgwgtklf7.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_804466_ndqqzvoj2ct.eot');
+  src: url('//at.alicdn.com/t/font_804466_ndqqzvoj2ct.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_804466_ndqqzvoj2ct.woff') format('woff'),
+  url('//at.alicdn.com/t/font_804466_ndqqzvoj2ct.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_804466_ndqqzvoj2ct.svg#iconfont') format('svg');
 }
   
   .iconfont {
@@ -45,7 +45,13 @@
   
   .icon-mima:before { content: "\e65a"; }
   
+  .icon-businesscard_fill:before { content: "\e6e6"; }
+  
+  .icon-unlock_fill:before { content: "\e73a"; }
+  
   .icon-xinxi:before { content: "\e62e"; }
+  
+  .icon-decoration_fill:before { content: "\e74f"; }
   
   .icon-jiantou:before { content: "\e621"; }
   

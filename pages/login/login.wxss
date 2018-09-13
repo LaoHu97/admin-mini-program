@@ -19,10 +19,7 @@ page {
 }
 .login_page button{
   width: 90%;
-  margin-top: 100rpx;
-}
-.login_page .button-hover{
-  background-color: #1988fb;
+  margin-top: 45rpx;
 }
 .user_list{
   width: 90%;
@@ -47,8 +44,11 @@ page {
 .login_page .main_page_btn{
   background-color: #f8f8f8;
   color: #409EFF;
-  font-size: 28rpx;
+  font-size: 30rpx;
   margin-bottom: 45rpx;
+}
+.login_page .other-button-hover{
+  color: #1988fb;
 }
 .login_page .main_page_btn::after{
   border: none;

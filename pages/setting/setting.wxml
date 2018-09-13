@@ -4,15 +4,50 @@
     <image class="page_top_img" mode="aspectFit" src="{{avatarUrl}}"></image>
     <view>{{name}}</view>
   </view>
-  <view class="page_main">
+  <view class="weui-cells">
+    <navigator class="weui-cell weui-cell_access" url="../userinfo/userinfo" hover-class="page_main_hover">
+      <view class="weui-cell__hd">
+        <text class='iconfont icon-businesscard_fill'></text>
+      </view>
+      <view class="weui-cell__bd">
+        <p>账户信息</p>
+      </view>
+      <view class="weui-cell__ft">
+        <text class='iconfont icon-jiantou'></text>
+      </view>
+    </navigator>
+    <view class="weui-cell weui-cell_access" bindtap="logOutBind" hover-class="page_main_hover">
+      <view class="weui-cell__hd">
+        <text class='iconfont icon-unlock_fill'></text>
+      </view>
+      <view class="weui-cell__bd">
+        <p>解除绑定</p>
+      </view>
+      <view class="weui-cell__ft">
+        <text class='iconfont icon-jiantou'></text>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells">
+    <view class="weui-cell weui-cell_access" bindtap="logOut" hover-class="page_main_hover">
+      <view class="weui-cell__hd">
+        <text class='iconfont icon-decoration_fill'></text>
+      </view>
+      <view class="weui-cell__bd">
+        <p>切换账号</p>
+      </view>
+      <view class="weui-cell__ft">
+        <text class='iconfont icon-jiantou'></text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="page_main">
     <navigator class="page_main_list" url="../userinfo/userinfo" hover-class="page_main_hover">
       <view class="page_main_list_left">
         <text class='iconfont icon-xinxi'></text>
         <view>账户信息</view>
       </view>
-      <view class="page_main_list_right">
-        <text class='iconfont icon-jiantou'></text>
-      </view>
+
     </navigator>
   </view>
   <view class="page_main">
@@ -36,5 +71,5 @@
         <text class='iconfont icon-jiantou'></text>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>

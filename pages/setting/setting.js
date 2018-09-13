@@ -4,12 +4,14 @@ const api = require('../../api/api')
 
 Page({
   data: {
-    avatarUrl: ''
+    avatarUrl: '',
+    name: ''
   },
   onLoad: function () {
     console.log(app.globalData.weixinUserInfo);
     this.setData({
-      avatarUrl: app.globalData.weixinUserInfo.avatarUrl
+      avatarUrl: app.globalData.weixinUserInfo.avatarUrl,
+      name: app.globalData.weixinUserInfo.nickName
     })
   },
   logOut () {
