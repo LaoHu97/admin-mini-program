@@ -66,7 +66,7 @@
           <view class="list_left">
             <text class="iconfont {{common.formatPaymentIco(item.payWay)}}"></text>
             <view class="list_left_text">
-              <view class="list_left_text_weixin">{{common.formatPayment(item.payWay)}}支付成功</view>
+              <view class="list_left_text_weixin">{{common.formatPayment(item.payWay)}}{{item.orderType === '1' ? '退款成功' : '收款成功'}}</view>
               <view class="list_left_text_weixin">{{item.createTime}}</view>
             </view>
           </view>

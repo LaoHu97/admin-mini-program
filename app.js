@@ -65,7 +65,8 @@ App({
          //发起网络请求
          let para = {
           code: res.code,
-          appid: 'wx50427ea6ba6bb0cc'
+          appid: 'wx50427ea6ba6bb0cc',
+          sessionId: ''
         }
         api.getMiniSession(para).then(res => {
           if (res.status === 200) {
