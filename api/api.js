@@ -1,8 +1,8 @@
 const index = require('./index')
 
-const preUrlPath = 'https://weixin.weupay.com'
+const preUrlPath = 'https://dev.weupay.com'
 
-const downLoad = 'https://download.weupay.com'
+const downLoad = 'https://test.weupay.com:8080'
 
 export const loginApp = params => { return index.wxHttp({ url: `${preUrlPath}/pay/api/app/200/1/loginApp`, data: params, method: 'POST' }).then(res => res.data) }
 
