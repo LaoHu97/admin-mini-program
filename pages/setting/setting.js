@@ -8,7 +8,7 @@ Page({
     name: ''
   },
   onLoad: function () {
-    console.log(app.globalData.weixinUserInfo);
+    console.log(app);
     this.setData({
       avatarUrl: app.globalData.weixinUserInfo.avatarUrl,
       name: app.globalData.weixinUserInfo.nickName
