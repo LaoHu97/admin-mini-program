@@ -4,16 +4,18 @@ const api = require('../../api/api')
 
 Page({
   data: {
-    avatarUrl: ''
+    avatarUrl: '',
+    name: ''
   },
   onLoad: function () {
-    console.log(app.globalData.weixinUserInfo);
+    console.log(app);
     this.setData({
-      avatarUrl: app.globalData.weixinUserInfo.avatarUrl
+      avatarUrl: app.globalData.weixinUserInfo.avatarUrl,
+      name: app.globalData.weixinUserInfo.nickName
     })
   },
   logOut () {
-    wx.redirectTo({
+    wx.reLaunch({
       url: '../login/login',
       success: res => {
         app.getUserList()
@@ -35,7 +37,7 @@ Page({
           api.unbindRoleAndUser(para).then(res => {
             if (res.status === 200) {
               app.getUserList().then(res => {
-                wx.navigateTo({
+                wx.reLaunch({
                   url: '../login/login',
                   success: res => {
                     wx.showToast({

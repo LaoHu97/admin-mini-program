@@ -1,5 +1,5 @@
-
-.iconfont{
+@import "../../lib//weui.wxss";
+/* .iconfont{
   line-height: 70rpx;
   color:#409EFF;
   font-size:45rpx;
@@ -27,15 +27,33 @@
 }
 .page_form_submit{
   margin-top: 100rpx;
-}
-
-/** 添加自定义button点击态样式类**/
-.other-button-hover {
-  background-color: #1988fb;
-  color: #fff;
-}
+} */
 
 .page_login_form{
+  width: 100%;
+}
+.weui-cells:after {
+  border-bottom: none;
+}
+.weui-cell:before {
+  left: 0;
+}
+.weui-cells:before {
+  border-top: none;
+}
+.weui-cell .page_form_submit{
+  background-color: #fff;
+  color: #409EFF;
+}
+.weui-cell .page_form_submit:after{
+  border: none;
+}
+/** 添加自定义button点击态样式类**/
+.weui-cell .other-button-hover {
+  color: #1988fb;
+}
+
+/* .page_login_form{
   width: 90%;
   margin-top: 100rpx;
-}
+} */

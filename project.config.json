@@ -7,15 +7,22 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": false,
+		"minified": true,
 		"newFeature": true,
-		"nodeModules": false
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.5",
-	"appid": "wx32a0348172f66270",
+	"appid": "wx50427ea6ba6bb0cc",
 	"projectname": "mini-program",
 	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "test.sh",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,

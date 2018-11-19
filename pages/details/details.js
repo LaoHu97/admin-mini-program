@@ -11,7 +11,7 @@ Page({
     orderId: '',
     amount: '',
     orderType: true,
-    status: ''
+    status: true
   },
   onLoad: function (item) {
     wx.showLoading({
@@ -39,7 +39,7 @@ Page({
           let is
           if (res.data.order.orderType === '0') {
             is = true
-            if (res.data.order.status === '4') {
+            if (res.data.order.status === '4' || res.data.order.status === '5') {
               is = false
             }
           } else {
@@ -48,7 +48,8 @@ Page({
           this.setData({
             detailsArray: list,
             isHistory: is,
-            orderType: res.data.order.orderType === '0' ? true : false
+            orderType: res.data.order.orderType === '0' ? true : false,
+            status: res.data.order.status === '5' ? true : false
           })
         }
       })
@@ -70,7 +71,8 @@ Page({
           this.setData({
             detailsArray: list,
             isHistory: false,
-            orderType: res.data.order.orderType === '0' ? true : false
+            orderType: res.data.order.orderType === '0' ? true : false,
+            status: res.data.order.status === '5' ? true : false
           })
         }
       })

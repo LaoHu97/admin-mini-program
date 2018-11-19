@@ -26,6 +26,14 @@ Page({
     })
   },
   getMapList () {
+    if (!this.data.searchInputValue) {
+      wx.showToast({
+        title: '请输入搜索关键字！',
+        icon: 'none',
+        mask: true
+      })
+      return
+    }
     let para = {
       mid: app.globalData.userInfo.loginUserInfo.role_id.toString(),
       sname: this.data.searchInputValue

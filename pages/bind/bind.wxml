@@ -1,5 +1,26 @@
 <view class="page">
-  <form class="page_login_form" bindsubmit="loginFormSubmit">
+  <form class="weui-cells weui-cells_form page_login_form" bindsubmit="loginFormSubmit">
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-label">账号：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" bindconfirm="bindConfirmAccount" value="{{account}}" type="text" name="account" confirm-type="next" focus="{{accountInputFocus}}" />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <label class="weui-input">密码：</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" password name="password" value="{{password}}" type="text" confirm-type="go" focus="{{passwordInputFocus}}" />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <button type="primary" class="page_form_submit" hover-class="other-button-hover" formType="submit">确认绑定</button>
+    </view>
+  </form>
+  <!-- <form class="page_login_form" bindsubmit="loginFormSubmit">
     <view class="page_form_account">
       <text class='iconfont icon-yonghuming'></text>
       <input placeholder="账号" bindconfirm="bindConfirmAccount" value="{{account}}" type="text" name="account" confirm-type="next" focus="{{accountInputFocus}}" />
@@ -9,9 +30,7 @@
       <input placeholder="密码" password name="password" value="{{password}}" type="text" confirm-type="go" focus="{{passwordInputFocus}}" />
     </view>
     <view class="page_form_submit">
-      <button type="primary" hover-class="other-button-hover" formType="submit">
-        绑定
-      </button>
+      <button type="primary" hover-class="other-button-hover" formType="submit">确认绑定</button>
     </view>
-  </form>
+  </form> -->
 </view>
