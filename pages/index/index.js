@@ -201,7 +201,7 @@ Page({
         if (this.data.pageNum == 1) {
           let comms = res.data.orderList
           for (let i = 0; i < comms.length; i++) {
-            comms[i].createTime = util.formatTime(comms[i].createTime);
+            comms[i].payTime = util.formatTime(comms[i].payTime);
           }
           this.setData({
             pageListObjectArray: comms || [],
@@ -213,7 +213,7 @@ Page({
         } else {
           let comms = res.data.orderList
           for (let i = 0; i < comms.length; i++) {
-            comms[i].createTime = util.formatTime(comms[i].createTime);
+            comms[i].payTime = util.formatTime(comms[i].payTime);
           }
           let list = this.data.pageListObjectArray
           list = list.concat(comms)
@@ -233,7 +233,7 @@ Page({
         if (this.data.pageNum == 1) {
           let comms = res.data.orderList
           for (let i = 0; i < comms.length; i++) {
-            comms[i].createTime = util.formatTime(comms[i].createTime);
+            comms[i].payTime = util.formatTime(comms[i].payTime);
           }
           this.setData({
             pageListObjectArray: comms || [],
@@ -245,7 +245,7 @@ Page({
         } else {
           let comms = res.data.orderList
           for (let i = 0; i < comms.length; i++) {
-            comms[i].createTime = util.formatTime(comms[i].createTime);
+            comms[i].payTime = util.formatTime(comms[i].payTime);
           }
           let list = this.data.pageListObjectArray
           list = list.concat(comms)
