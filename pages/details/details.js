@@ -68,9 +68,18 @@ Page({
             { name: '日期', value: util.formatTime(res.data.order.payTime) },
             { name: '订单号', value: res.data.order.orderId }
           )
+          let is
+          if (res.data.order.orderType === '0') {
+            is = true
+            if (res.data.order.status === '4' || res.data.order.status === '5') {
+              is = false
+            }
+          } else {
+            is = false
+          }
           this.setData({
             detailsArray: list,
-            isHistory: false,
+            isHistory: is,
             orderType: res.data.order.orderType === '0' ? true : false,
             status: res.data.order.status === '5' ? true : false
           })
