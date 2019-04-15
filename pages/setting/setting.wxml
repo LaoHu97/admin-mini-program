@@ -27,6 +27,28 @@
         <text class='iconfont icon-jiantou'></text>
       </view>
     </view>
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__hd">
+        <text class='iconfont icon-laba'></text>
+      </view>
+      <view class="weui-cell__bd">
+        <p>语音播报</p>
+      </view>
+      <view class="weui-cell__ft">
+        <switch bindchange="switchChange" checked="{{switchOpenStatus}}" color="#1988fb"/>
+      </view>
+    </view>
+    <navigator class="weui-cell weui-cell_access" hidden="{{ successionHidden }}" url="../succession/succession" hover-class="page_main_hover">
+      <view class="weui-cell__hd">
+        <text class='iconfont icon-banci'></text>
+      </view>
+      <view class="weui-cell__bd">
+        <p>交接班</p>
+      </view>
+      <view class="weui-cell__ft">
+        <text class='iconfont icon-jiantou'></text>
+      </view>
+    </navigator>
   </view>
   <view class="weui-cells">
     <view class="weui-cell weui-cell_access" bindtap="logOut" hover-class="page_main_hover">

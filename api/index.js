@@ -1,12 +1,10 @@
-// wx.cloud.init()
-// const db = wx.cloud.database()
-// const logs = db.collection('logs')
 
 const wxHttp = params => {
   if (!params.data) {
     params.data = {}
   }
   let sessionId = wx.getStorageSync('sessionId')
+
   let header = {
     sessionId : sessionId
   }
@@ -14,8 +12,7 @@ const wxHttp = params => {
     title: '请稍后',
     mask: true
   })
-  console.log('发送数据：')
-  console.log(params)
+  console.log('发送数据：' ,params)
   let promise = new Promise(function (resolve, reject) {
     wx.request({
       url: params.url,
@@ -23,8 +20,7 @@ const wxHttp = params => {
       header: header,
       method: params.method,
       success: res => {
-        console.log('接受数据：')
-        console.log(res)
+        console.info('接受数据：' ,res)
         wx.hideLoading()
         if (res.data.status === 200) {
           resolve(res) 
@@ -37,6 +33,9 @@ const wxHttp = params => {
             success: res => {
               let app = getApp()
               app.getUserSession(app.getUserList)
+              wx.reLaunch({
+                url: '../login/login'
+              })
             }
           })
         } else {

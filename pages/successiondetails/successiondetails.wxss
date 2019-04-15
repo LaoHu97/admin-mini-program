@@ -1,0 +1,56 @@
+/* pages/succession/succession.wxss */
+.succession_top {
+  background: #fff;
+  text-align: center;
+  line-height: 2.8;
+}
+
+.succession_top_title {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.succession_top_amount {
+  font-size: 60rpx;
+  color: tomato;
+}
+
+.succession_top_date {
+  font-size: 24rpx;
+  color: #999;
+  margin: 0 30rpx;
+  border-top: #999 solid 1rpx;
+}
+
+.succession_main {
+  margin-top: 30rpx;
+  border-bottom: #999 solid 1rpx;
+}
+
+.succession_main_list {
+  background: #fff;
+  line-height: 2;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.succession_main_list span {
+  width: 240rpx;
+  text-align: center;
+}
+
+.succession_main_list_title {
+  background: #fff;
+  line-height: 3;
+  font-size: 34rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: #999 solid 1rpx;
+}
+
+.succession_main_list_title span {
+  width: 200rpx;
+  text-align: center;
+}

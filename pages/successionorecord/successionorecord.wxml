@@ -1,0 +1,49 @@
+<!--pages/successionorecord/successionorecord.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="successionorecord_page">
+  <view class="succession_top">
+    <view class="succession_select_date">
+      <view class="select_date">
+        <text class="select_date_title">开始日期 </text>
+        <picker value="{{startTime}}" mode="date" class="select_date_picker" bindchange="bindStartDateChange">
+          <button class="select_date_button" type="default" size="mini">{{startTime}}</button>
+        </picker>
+      </view>
+      <view class="select_date">
+        <text class="select_date_title">结束日期 </text>
+        <picker value="{{endTime}}" mode="date" class="select_date_picker" bindchange="bindEndDateChange">
+          <button class="select_date_button" type="default" size="mini">{{endTime}}</button>
+        </picker>
+      </view>
+    </view>
+    <view class="succession_query">
+        <button type="primary" size="mini" bindtap="submiltSuccession" hover-class="other-button-hover">
+          确定
+        </button>
+    </view>
+  </view>
+  <view class="succession_main">
+    <view class="succession_main_list_title">
+      <span>开始时间</span>
+      <span>结束时间</span>
+      <span>交班人</span>
+      <span>操作</span>
+    </view>
+    <scroll-view scroll-y style="height:{{windowHeight - 140}}px" enable-back-to-top bindscrolltolower="bindscrolltolower" class="page_list_scroll">
+      <view wx:if="{{successionList.length}}">
+        <view class="succession_main_list" wx:for="{{ successionList }}" wx:key="index">
+          <span>{{ item.startTime }}</span>
+          <span>{{ item.endTime }}</span>
+          <span>{{ item.reserve1 }}</span>
+          <span class="succession_main_list_button">  
+            <button type="primary" size="mini" data-id="{{ item.id }}" bindtap="successionTap" hover-class="other-button-hover">
+              查看
+            </button> 
+          </span>
+        </view>
+        <view class="load_done" hidden="{{loadDone}}">没有更多数据了</view>
+      </view>
+      <view class="page_list_else" wx:else>暂无数据</view>
+    </scroll-view>
+  </view>
+</view>

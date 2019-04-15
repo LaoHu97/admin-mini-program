@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/login/login",
     "pages/bind/bind",
     "pages/index/index",
@@ -7,28 +7,41 @@
     "pages/details/details",
     "pages/search/search",
     "pages/refund/refund",
-    "pages/userinfo/userinfo"
+    "pages/userinfo/userinfo",
+    "pages/succession/succession",
+    "pages/successionorecord/successionorecord",
+    "pages/successiondetails/successiondetails"
   ],
-  "window":{
+  "requiredBackgroundModes": ["audio"],
+  "window": {
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "backgroundTextStyle": "dark",
     "backgroundColor": "#f8f8f8"
   },
   "tabBar": {
     "color": "#8a8a8a",
     "selectedColor": "#409EFF",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "iconPath": "./assets/icon/main_query_nochecd_icon.png",
-      "selectedIconPath": "./assets/icon/main_query_checd_icon.png",
-      "text": "查询"
-    }, {
-      "pagePath": "pages/setting/setting",
-      "iconPath": "./assets/icon/main_my_nochecd_icon.png",
-      "selectedIconPath": "./assets/icon/main_my_checd_icon.png",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./assets/icon/main_query_nochecd_icon.png",
+        "selectedIconPath": "./assets/icon/main_query_checd_icon.png",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "./assets/icon/main_my_nochecd_icon.png",
+        "selectedIconPath": "./assets/icon/main_my_checd_icon.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.2.2",
+      "provider": "wx069ba97219f66d99"
+    }
   }
 }

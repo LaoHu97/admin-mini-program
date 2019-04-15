@@ -1,0 +1,83 @@
+/* pages/successionorecord/successionorecord.wxss */
+.succession_main {
+  margin-top: 30rpx;
+}
+
+.succession_main_list {
+  background: #fff;
+  line-height: 2;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: #999 solid 1rpx;
+}
+
+.succession_main_list span {
+  width: 180rpx;
+  text-align: center;
+  word-break:normal;
+  word-wrap : break-word;
+}
+
+.succession_main_list_title {
+  background: #fff;
+  line-height: 3;
+  font-size: 34rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: #999 solid 1rpx;
+}
+
+.succession_main_list_title span {
+  width: 200rpx;
+  text-align: center;
+}
+.succession_main_list_button{
+  display: flex;
+  align-items: center;
+}
+.select_date_picker{
+  width: 340rpx;
+  height:29px;
+}
+.select_date_button {
+  width: 100%;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #606266;
+}
+.succession_top{
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 20rpx;
+}
+.succession_select_date {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.select_date{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rpx;
+  font-size: 34rpx;
+}
+.succession_query{
+  display: flex;
+  align-items: center;
+}
+.page_list_else {
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 5;
+}
+.load_done {
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 5;
+}

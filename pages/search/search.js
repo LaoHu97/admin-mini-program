@@ -77,8 +77,6 @@ Page({
     })
   },
   tapMapsScrollView (item) {
-    console.log(item);
-    
     app.globalData.storeData = item.currentTarget.dataset.item || null
     wx.switchTab({
       url: '../index/index'

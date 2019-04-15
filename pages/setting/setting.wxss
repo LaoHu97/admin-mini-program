@@ -43,3 +43,6 @@
 .icon-businesscard_fill{
   color: forestgreen
 }
+.icon-laba{
+  color: blue;
+}

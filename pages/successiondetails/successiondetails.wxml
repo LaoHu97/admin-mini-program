@@ -1,0 +1,21 @@
+<!-- pages/succession/succession.wxml -->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="succession_page">
+  <view class="succession_top">
+    <view class="succession_top_title">实收金额(元)</view>
+    <view class="succession_top_amount">￥{{ totalAmount }}</view>
+    <view class="succession_top_date">{{ startTime }}至{{ endTime }}</view>
+  </view>
+  <view class="succession_main">
+    <view class="succession_main_list_title">
+      <span>收款统计</span>
+      <span>笔数</span>
+      <span>金额</span>
+    </view>
+    <view class="succession_main_list" wx:for="{{ amountList }}" wx:key="index">
+      <span>{{ common.formatPayment(item.mode) }}{{  item.type === 'refund' ? '退款' : '' }}</span>
+      <span>{{ item.totalCount }}</span>
+      <span>{{ item.money }}</span>
+    </view>
+  </view>
+</view>

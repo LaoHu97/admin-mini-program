@@ -1,5 +1,6 @@
 //app.js
 const api = require('./api/api')
+const webSocket = require('./utils/webSocket.js')
 
 App({
   onLaunch: function () {
@@ -13,7 +14,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.weixinUserInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -43,6 +43,13 @@ App({
         this.getUserSession(this.getUserList) //重新登录
       }
     })
+    wx.onMemoryWarning(function () {
+      wx.showToast({
+        title: '内存警告',
+        icon: 'none',
+        duration: 2000
+      })
+    })
   },
   getUserList () {
     let _this = this
@@ -62,14 +69,16 @@ App({
   getUserSession (callback) {
     wx.login({
       success: res => {
+        const accountInfo = wx.getAccountInfoSync()
          //发起网络请求
          let para = {
           code: res.code,
-          appid: 'wx50427ea6ba6bb0cc',
+          appid: accountInfo.miniProgram.appId,
           sessionId: ''
         }
         api.getMiniSession(para).then(res => {
           if (res.status === 200) {
+            wx.setStorageSync('wsSessionId', res.wsSessionId)
             wx.setStorageSync('sessionId', res.sessionId)
             callback()
           }
