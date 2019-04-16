@@ -27,7 +27,7 @@
         <text class='iconfont icon-jiantou'></text>
       </view>
     </view>
-    <view class="weui-cell weui-cell_access">
+    <view class="weui-cell weui-cell_access" hidden="{{ successionHidden }}">
       <view class="weui-cell__hd">
         <text class='iconfont icon-laba'></text>
       </view>

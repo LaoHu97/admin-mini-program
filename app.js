@@ -51,6 +51,36 @@ App({
       })
     })
   },
+  getAudio() {
+    wx.showLoading({
+      title: '下载数据',
+      mask: true
+    })
+    wx.downloadFile({
+      url: api.audioFileUrl,
+      success: res => {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        console.log('下载MP3文件：', res)
+        wx.saveFile({
+          tempFilePath: res.tempFilePath,
+          success: res => {
+            console.log('保存MP3文件：',res)
+            wx.hideLoading()
+            this.globalData.audioFile = res.savedFilePath
+            if (this.audioCallback) {
+              this.audioCallback(res)
+            }
+          },
+          fail: err => {
+            console.error('保存MP3文件错误：', err)
+          }
+        })
+      },
+      fail: err => {
+        console.error('下载MP3文件错误：', err)
+      }
+    })
+  },
   getUserList () {
     let _this = this
     let promise = new Promise(function (resolve, reject) {
@@ -61,6 +91,14 @@ App({
           if (_this.userListCallback) {
             _this.userListCallback(res)
           }
+          wx.getSavedFileList({
+            success: res => {
+              console.log('MP3文件列表：', res.fileList)
+              if (!res.fileList.length) {
+                _this.getAudio()
+              }
+            }
+          })
         }
       })
     })
@@ -78,7 +116,6 @@ App({
         }
         api.getMiniSession(para).then(res => {
           if (res.status === 200) {
-            wx.setStorageSync('wsSessionId', res.wsSessionId)
             wx.setStorageSync('sessionId', res.sessionId)
             callback()
           }
@@ -90,6 +127,7 @@ App({
     weixinUserInfo: null,
     userInfo: null,
     storeData: null,
-    userList: null
+    userList: null,
+    audioFile: null
   }
 })

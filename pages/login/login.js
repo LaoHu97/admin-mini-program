@@ -58,6 +58,7 @@ Page({
     }
     api.getLoginRole(para).then(res => {
       if (res.status === 200) {
+        wx.setStorageSync('wsSessionId', res.data.wsSessionId)
         app.globalData.userInfo = res.data
         wx.switchTab({
           url: '../index/index'
@@ -69,7 +70,6 @@ Page({
     })
   },
   webSocketStart() {
-    // webSocket.playWechatSI()
     // 创建连接
     webSocket.connectSocket()
   }

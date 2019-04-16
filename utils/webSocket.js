@@ -9,9 +9,9 @@ var heart = ''
 // 心跳失败次数
 var heartBeatFailCount = 0
 // 终止心跳
-var heartBeatTimeOut = null;
+var heartBeatTimeOut = null
 // 终止重新连接
-var connectSocketTimeOut = null;
+var connectSocketTimeOut = null
 
 const plugin = requirePlugin("WechatSI")
 
@@ -193,16 +193,27 @@ var webSocket = {
       }
     })
   },
+
   playWechatSI(val, r) {
     let app = getApp()
     let that = this
-    let m = 'http://dev.weupay.com/admin/web/m.mp3'
     backgroundAudioManager.title = '小程序收款语音播报'
     if (val) {
       backgroundAudioManager.epname = r
       backgroundAudioManager.src = val
     }else{
-      backgroundAudioManager.src = m
+      wx.getSavedFileList({
+        success: res => {
+          console.log('MP3文件列表：', res.fileList)
+          if (res.fileList.length) {
+            backgroundAudioManager.src = res.fileList[0].filePath
+          }else{
+            app.audioCallback = res => {
+              backgroundAudioManager.src = res.savedFilePath
+            }
+          }
+        }
+      })
     }
     backgroundAudioManager.onEnded(function (params) {
       if (app.globalData.userInfo.loginUserInfo.reverse1 === 'Y') {

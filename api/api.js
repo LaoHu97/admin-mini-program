@@ -6,6 +6,8 @@ const downLoad = 'https://download.weupay.com'
 
 export const websocketUrl = 'wss://weixin.weupay.com/websocket'
 
+export const audioFileUrl = `${preUrlPath}/blank.mp3`
+
 export const loginApp = params => { return index.wxHttp({ url: `${preUrlPath}/pay/api/app/200/1/loginApp`, data: params, method: 'POST' }).then(res => res.data) }
 
 export const queryStoreByName = params => { return index.wxHttp({ url: `${preUrlPath}/pay/api/app/200/1/queryStoreByName`, data: params, method: 'POST' }).then(res => res.data) }
