@@ -7,11 +7,11 @@
         <input name="amount" type="digit" placeholder="默认全额退款" focus/>
       </view>
     </view>
-    <view class="page_from_verify">
+    <!-- <view class="page_from_verify">
       <text>验证码</text>
       <input name="code" placeholder="请输入验证码" />
       <button size="mini" type="{{buttonType}}" disabled="{{buttonDisabled}}" hover-class="refund_class" bindtap="clickCode">{{btntext}}</button>
-    </view>
+    </view> -->
     <view class="btn-area">
       <button formType="submit" type="primary" hover-class="refund_class">确定</button>
     </view>

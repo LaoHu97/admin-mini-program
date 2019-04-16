@@ -54,16 +54,10 @@ Page({
     })
   },
   formSubmit (e) {
-    if (!e.detail.value.code) {
-      wx.showToast({
-        title: '请输入验证码',
-        icon: 'none'
-      })
-    } else {
       let para = {
         orderId: this.data.orderId,
         amount: e.detail.value.amount || this.data.amount,
-        verCode: e.detail.value.code,
+        // verCode: e.detail.value.code,
         desc: '',
         role: app.globalData.userInfo.loginUserInfo.role,
         roleId: app.globalData.userInfo.loginUserInfo.roleId
@@ -77,7 +71,7 @@ Page({
             title: '退款成功',
             icon: 'success',
             duration: 2000,
-            success:function () {
+            success: function () {
               setTimeout(() => {
                 wx.navigateBack({
                   delta: 2
@@ -87,6 +81,5 @@ Page({
           })
         }
       })
-    }
   }
 })
