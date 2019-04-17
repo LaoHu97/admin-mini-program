@@ -15,6 +15,8 @@ var connectSocketTimeOut = null
 
 const plugin = requirePlugin("WechatSI")
 
+const fs = wx.getFileSystemManager()
+
 const api = require('../api/api')
 
 const backgroundAudioManager = wx.getBackgroundAudioManager()
@@ -202,7 +204,7 @@ var webSocket = {
       backgroundAudioManager.epname = r
       backgroundAudioManager.src = val
     }else{
-      wx.getSavedFileList({
+      fs.getSavedFileList({
         success: res => {
           console.log('MP3文件列表：', res.fileList)
           if (res.fileList.length) {
