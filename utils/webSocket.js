@@ -208,19 +208,40 @@ var webSocket = {
         success: res => {
           console.log('MP3文件列表：', res.fileList)
           if (res.fileList.length) {
+            console.log('占位MP3文件', res.fileList[0].filePath)
+            backgroundAudioManager.epname = r
             backgroundAudioManager.src = res.fileList[0].filePath
           }else{
             app.audioCallback = res => {
+              console.log('占位MP3文件', res.savedFilePath)
+              backgroundAudioManager.epname = r
               backgroundAudioManager.src = res.savedFilePath
             }
           }
         }
       })
     }
-    backgroundAudioManager.onEnded(function (params) {
+    backgroundAudioManager.onEnded(function () {
       if (app.globalData.userInfo.loginUserInfo.reverse1 === 'Y') {
         that.playWechatSI()
       }
+    })
+    backgroundAudioManager.onError(function () {
+      fs.getSavedFileList({
+        success: res => {
+          console.log('获取错误得MP3文件列表：', res.fileList)
+          if (res.fileList.length) {
+            fs.removeSavedFile({
+              filePath: res.fileList[0].filePath,
+              success: res => {
+                console.log('删除错误得MP3文件：', res)
+              }
+            })
+          } else {
+            console.log('没有获取错误得MP3文件列表：')
+          }
+        }
+      })
     })
   }
 }

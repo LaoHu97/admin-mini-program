@@ -62,6 +62,7 @@ App({
       success: res => {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         console.log('下载MP3文件：', res)
+        if (res.statusCode === 200) {
         fs.saveFile({
           tempFilePath: res.tempFilePath,
           success: res => {
@@ -73,7 +74,7 @@ App({
             }
           },
           fail: err => {
-            console.error('保存MP3文件错误：', err)
+            console.error('保存MP3文件错误', err)
             wx.hideLoading()
             wx.showToast({
               title: '保存MP3文件错误',
@@ -81,7 +82,15 @@ App({
               duration: 2000
             })
           }
-        })
+        })}else{
+          console.error('下载MP3文件错误，语音播报可能无效')
+          wx.hideLoading()
+          wx.showToast({
+            title: '下载MP3文件错误，语音播报可能无效',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       },
       fail: err => {
         console.error('下载MP3文件错误：', err)
