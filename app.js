@@ -57,12 +57,15 @@ App({
       title: '下载数据'
     })
     let _this = this
+    console.log(api.audioFileUrl)
     wx.downloadFile({
       url: api.audioFileUrl,
       success: res => {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         console.log('下载MP3文件：', res)
-        if (res.statusCode === 200) {
+        let tempFilePathType = res.tempFilePath.slice(-3)
+        console.log(tempFilePathType)
+        if (res.statusCode === 200 && tempFilePathType !== 'txt') {
         fs.saveFile({
           tempFilePath: res.tempFilePath,
           success: res => {

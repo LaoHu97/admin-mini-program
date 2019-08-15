@@ -199,8 +199,8 @@ var webSocket = {
   playWechatSI(val, r) {
     let app = getApp()
     let that = this
-    backgroundAudioManager.title = '小程序收款语音播报'
     if (val) {
+      backgroundAudioManager.title = '小程序收款语音播报'
       backgroundAudioManager.epname = r
       backgroundAudioManager.src = val
     }else{
@@ -208,12 +208,14 @@ var webSocket = {
         success: res => {
           console.log('MP3文件列表：', res.fileList)
           if (res.fileList.length) {
-            console.log('占位MP3文件', res.fileList[0].filePath)
+            console.log('占位MP3文件1', res.fileList[0].filePath)
+            backgroundAudioManager.title = '小程序收款语音播报'
             backgroundAudioManager.epname = r
             backgroundAudioManager.src = res.fileList[0].filePath
           }else{
             app.audioCallback = res => {
-              console.log('占位MP3文件', res.savedFilePath)
+              console.log('占位MP3文件2', res.savedFilePath)
+              backgroundAudioManager.title = '小程序收款语音播报'
               backgroundAudioManager.epname = r
               backgroundAudioManager.src = res.savedFilePath
             }
