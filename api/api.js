@@ -1,10 +1,10 @@
 const index = require('./index')
 
-const preUrlPath = 'https://pay.wandingkeji.cn'
+const preUrlPath = 'https://devpay.wandingkeji.cn'
 
-const downLoad = 'https://download.wandingkeji.cn'
+const downLoad = 'https://devdownload.wandingkeji.cn'
 
-export const websocketUrl = 'wss://pay.wandingkeji.cn/websocket'
+export const websocketUrl = 'wss://devpay.wandingkeji.cn/websocket'
 
 export const audioFileUrl = `${preUrlPath}/blank.mp3`
 
