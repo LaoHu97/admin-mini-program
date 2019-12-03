@@ -12,7 +12,9 @@
     "pages/successionorecord/successionorecord",
     "pages/successiondetails/successiondetails"
   ],
-  "requiredBackgroundModes": ["audio"],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
   "window": {
     "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "WeChat",
@@ -40,8 +42,9 @@
   },
   "plugins": {
     "WechatSI": {
-      "version": "0.2.2",
+      "version": "0.3.0",
       "provider": "wx069ba97219f66d99"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

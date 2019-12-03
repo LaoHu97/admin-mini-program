@@ -1,6 +1,7 @@
 //app.js
 const api = require('./api/api')
 const webSocket = require('./utils/webSocket.js')
+const fs = wx.getFileSystemManager()
 
 App({
   onLaunch: function () {
@@ -53,31 +54,55 @@ App({
   },
   getAudio() {
     wx.showLoading({
-      title: '下载数据',
-      mask: true
+      title: '下载数据'
     })
+    let _this = this
+    console.log(api.audioFileUrl)
     wx.downloadFile({
       url: api.audioFileUrl,
       success: res => {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         console.log('下载MP3文件：', res)
-        wx.saveFile({
+        let tempFilePathType = res.tempFilePath.slice(-3)
+        console.log(tempFilePathType)
+        if (res.statusCode === 200 && tempFilePathType !== 'txt') {
+        fs.saveFile({
           tempFilePath: res.tempFilePath,
           success: res => {
-            console.log('保存MP3文件：',res)
+            console.log('保存MP3文件：', res)
             wx.hideLoading()
-            this.globalData.audioFile = res.savedFilePath
-            if (this.audioCallback) {
-              this.audioCallback(res)
+            _this.globalData.audioFile = res.savedFilePath
+            if (_this.audioCallback) {
+              _this.audioCallback(res)
             }
           },
           fail: err => {
-            console.error('保存MP3文件错误：', err)
+            console.error('保存MP3文件错误', err)
+            wx.hideLoading()
+            wx.showToast({
+              title: '保存MP3文件错误',
+              icon: 'none',
+              duration: 2000
+            })
           }
-        })
+        })}else{
+          console.error('下载MP3文件错误，语音播报可能无效')
+          wx.hideLoading()
+          wx.showToast({
+            title: '下载MP3文件错误，语音播报可能无效',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       },
       fail: err => {
         console.error('下载MP3文件错误：', err)
+        wx.hideLoading()
+        wx.showToast({
+          title: '下载MP3文件错误',
+          icon: 'none',
+          duration: 2000
+        })
       }
     })
   },
@@ -91,9 +116,15 @@ App({
           if (_this.userListCallback) {
             _this.userListCallback(res)
           }
-          wx.getSavedFileList({
+          fs.getSavedFileList({
             success: res => {
               console.log('MP3文件列表：', res.fileList)
+              // wx.removeSavedFile({
+              //   filePath: res.fileList[0].filePath,
+              //   complete(res) {
+              //     console.log(res)
+              //   }
+              // })
               if (!res.fileList.length) {
                 _this.getAudio()
               }
