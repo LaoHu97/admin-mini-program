@@ -2,7 +2,7 @@
   <h3>欢迎使用悦收银助手</h3>
   <h5>可方便、及时地查看经营数据，管理</h5>
   <view class="user_list">
-      <view class="user_list_page" wx:for="{{userList}}" wx:key="{{index}}" data-useritem="{{item}}" bind:tap="clickUser" hover-class="user_list_page_hover">
+      <view class="user_list_page" wx:for="{{userList}}" wx:key="index" data-useritem="{{item}}" bind:tap="clickUser" hover-class="user_list_page_hover">
         <view class="user_list_page_left">
           <view>{{item.role_name}}</view>
           <view class="user_list_page_name">

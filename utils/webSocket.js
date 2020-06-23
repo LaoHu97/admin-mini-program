@@ -21,7 +21,33 @@ const api = require('../api/api')
 
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 
-var webSocket = {
+backgroundAudioManager.onEnded(function () {
+  console.log('------>本地音频播放结束事件');
+  const app = getApp()
+  if (app.globalData.userInfo.loginUserInfo.reverse1 === 'Y') {
+    console.log('------>重新播放本地音频');
+    webSocket.playWechatSI()
+  }
+})
+backgroundAudioManager.onError(function () {
+  fs.getSavedFileList({
+    success: res => {
+      console.log('获取错误得MP3文件列表：', res.fileList)
+      if (res.fileList.length) {
+        fs.removeSavedFile({
+          filePath: res.fileList[0].filePath,
+          success: res => {
+            console.log('删除错误得MP3文件：', res)
+          }
+        })
+      } else {
+        console.log('没有获取错误得MP3文件列表：')
+      }
+    }
+  })
+})
+
+const webSocket = {
 
   /**
    * 创建一个 WebSocket 连接
@@ -72,7 +98,7 @@ var webSocket = {
    *   complete    Function    否    接口调用结束的回调函数（调用成功、失败都会执行）
    */
   sendSocketMessage: function (options) {
-    console.log('发送服务器内容：', options)
+    // console.log('发送服务器内容：', options)
     if (socketOpen) {
       wx.sendSocketMessage({
         data: options.msg,
@@ -130,9 +156,8 @@ var webSocket = {
   // 开始心跳
   startHeartBeat: function () {
     console.log('socket开始心跳')
-    var self = this;
     heart = 'heart';
-    self.heartBeat();
+    this.heartBeat();
   },
 
   // 结束心跳
@@ -159,8 +184,10 @@ var webSocket = {
     self.sendSocketMessage({
       msg: '2/skyybb',
       success: function (res) {
-        console.log('socket心跳成功');
+        // console.log('socket心跳成功');
         if (heart) {
+          clearTimeout(heartBeatTimeOut);
+          heartBeatTimeOut = null;
           heartBeatTimeOut = setTimeout(() => {
             self.heartBeat();
           }, 20000);
@@ -173,6 +200,8 @@ var webSocket = {
           self.connectSocket()
         }
         if (heart) {
+          clearTimeout(heartBeatTimeOut);
+          heartBeatTimeOut = null;
           heartBeatTimeOut = setTimeout(() => {
             self.heartBeat();
           }, 20000);
@@ -197,8 +226,6 @@ var webSocket = {
   },
 
   playWechatSI(val, r) {
-    let app = getApp()
-    let that = this
     if (val) {
       backgroundAudioManager.title = '小程序收款语音播报'
       backgroundAudioManager.epname = r
@@ -223,28 +250,6 @@ var webSocket = {
         }
       })
     }
-    backgroundAudioManager.onEnded(function () {
-      if (app.globalData.userInfo.loginUserInfo.reverse1 === 'Y') {
-        that.playWechatSI()
-      }
-    })
-    backgroundAudioManager.onError(function () {
-      fs.getSavedFileList({
-        success: res => {
-          console.log('获取错误得MP3文件列表：', res.fileList)
-          if (res.fileList.length) {
-            fs.removeSavedFile({
-              filePath: res.fileList[0].filePath,
-              success: res => {
-                console.log('删除错误得MP3文件：', res)
-              }
-            })
-          } else {
-            console.log('没有获取错误得MP3文件列表：')
-          }
-        }
-      })
-    })
   }
 }
 
@@ -282,7 +287,7 @@ wx.onSocketError(function (res) {
 
 // 监听WebSocket接受到服务器的消息事件。
 wx.onSocketMessage(function (res) {
-  console.log('收到服务器内容：' + res.data)
+  // console.log('收到服务器内容：' + res.data)
   if (res.data.substr(0, 2) === "42") {
     let para = JSON.parse(res.data.slice(10))
     webSocket.wxTextToSpeech(para[1].message)

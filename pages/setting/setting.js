@@ -11,10 +11,12 @@ Page({
     successionHidden: true
   },
   onLoad: function () {
-    this.setData({
-      avatarUrl: app.globalData.weixinUserInfo.avatarUrl,
-      name: app.globalData.weixinUserInfo.nickName
-    })
+    if (app.globalData.weixinUserInfo) {
+      this.setData({
+        avatarUrl: app.globalData.weixinUserInfo.avatarUrl,
+        name: app.globalData.weixinUserInfo.nickName
+      })
+    }
   },
   onShow() {
     this.setData({
@@ -27,6 +29,7 @@ Page({
     }
   },
   logOut () {
+    console.log('--->切换账号');
     wx.reLaunch({
       url: '../login/login',
       success: res => {

@@ -9,18 +9,29 @@
 		]
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": false,
 		"autoAudits": false,
-		"uglifyFileName": true
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.2.3",
-	"appid": "wx32a0348172f66270",
+	"appid": "wx50427ea6ba6bb0cc",
 	"projectname": "mini-program",
 	"isGameTourist": false,
 	"scripts": {

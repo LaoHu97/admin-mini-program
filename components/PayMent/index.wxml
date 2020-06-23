@@ -1,7 +1,7 @@
 <view>
   <text class="top_title">{{payTitle}}</text>
   <radio-group class="group" bindchange="radioChange">
-    <view class="label" wx:for="{{radioItems}}" wx:key="{{index}}">
+    <view class="label" wx:for="{{radioItems}}" wx:key="index">
       <radio id="{{item.name}}" hidden value="{{item.value}}" checked="{{item.checked}}"></radio>
       <label class="label_main" for="{{item.name}}" style="background:{{item.checked ? '#409EFF': '#fff'}};color:{{item.checked ? '#fff': '#303133'}}">
         <text>{{item.name}}</text>
